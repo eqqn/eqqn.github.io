@@ -15,8 +15,8 @@ Interestingly enough, the payload is generated from cells contents.
 VBA language is used for macros and printing the output of the function is not as straightforward, but we can direct the payload content into a cell, to see what's happening. Looking online, you can find samples how it is done, if you are not familiar with VBA.
 Adding `Cells(1, 1) = aaaaaaa(0) + aaaaaaa(1) + aaaaaaa(2)` after regwrite, we dump the object into first cell.
 
-**WScript.ShellHKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\**
-**flagINS{Do_n0t_Ena8le_M4cro}**
+**WScript.ShellHKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\
+flagINS{Do_n0t_Ena8le_M4cro}**
 
 ## Extra
 vba02-bitminer was a similar chall, except that the result of the payload was a "miner" executable. After disassembly it was difficult to see any magic strings, so I did the only reasonable thing - running it, and inspecting the packet sent on Wireshark. 
