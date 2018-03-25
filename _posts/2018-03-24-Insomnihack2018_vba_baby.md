@@ -1,4 +1,5 @@
-# vba01-baby
+# Insomnihack CTF 2018
+## vba01-baby
 ### The challenge: 
 "Help, I've accidentally opened an email attachment, help me find out what happened" 
 
