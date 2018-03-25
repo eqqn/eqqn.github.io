@@ -14,7 +14,8 @@ At this point it is wise to proceed in a Windows VM, because macros will run as 
 
 Interestingly enough, the payload is generated from cells contents.
 VBA language is used for macros and printing the output of the function is not as straightforward, but we can direct the payload content into a cell, to see what's happening. Looking online, you can find samples how it is done, if you are not familiar with VBA.
-Adding `Cells(1, 1) = aaaaaaa(0) + aaaaaaa(1) + aaaaaaa(2)` after regwrite, we dump the string into the first cell.
+Adding `Cells(1, 1) = aaaaaaa(0) + aaaaaaa(1) + aaaaaaa(2)` after regwrite, we dump the string into the first cell. 
+Now run it!
 
 **WScript.ShellHKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Run\
 flagINS{Do_n0t_Ena8le_M4cro}**
