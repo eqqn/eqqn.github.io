@@ -5,7 +5,7 @@
 So you are developing your services/applications on the cloud.
 Naturally you, or the management, or the customer asks the question:__"How secure is this?"__
 If you listen to the buzz, it's a scary world out there. 
-### What if you pull a compromised container?! [2]
+## What if you pull a compromised container?! [2]
 Most articles fail to mention that most of the downloads are done on compromised orchestration/deployment infrastructure, rather than some clueless developer starting their Dockerfile with
 ```
 FROM ubuntu:15.04_deprecated_4_year_old_version_tutorial_example
@@ -22,6 +22,10 @@ You can at the very least assume that Docker is acting in it's self interest and
 
 ### Prevention:
 Verify the image publisher, avoid old versions, use common sense. 
+
+## What if someone hacks my cluster?!
+Is your kubernetes API publicly exposed? 
+If you answered, "Yes, I did go out of my way to expose my most critical orchestration component to the public internet without any authentication" , the miners will thank you.
 
 
 
