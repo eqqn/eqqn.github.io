@@ -20,6 +20,7 @@ Following it leads to...
 
 Oh. That's not good. Someone misconfigured their server, or inadvertedly exposed it  
 by trying to provide the verification file and left the website root open for a few years.
+Another error is putting SQL dumps on the webserver. ( thx friend for pointing it out)
 So now it's up to me to find out who owns this server and ~~crack the passwords from SQL dump and take over the CEO's account~~ 
 **notify them**,because thats what the good guys do.
 Analyzing the files served, you can see that it hosts some wordpress files from 2013 to 2016. 
