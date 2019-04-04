@@ -4,4 +4,4 @@
 
 [HaveIBeenPwned_adventures_with_Shodan]({{ site.baseurl }}{% post_url 2019-02-10-misadventures_of_shodan %})
 
-[The Nixu Challenge 2019 - Ports]({{ site.baseurl }}{% post_url 2019-04-04-Nixu9Ports.md %})
+[The Nixu Challenge 2019 - Ports]({{ site.baseurl }}{% post_url 2019-04-04-Nixu9Ports %})
