@@ -12,4 +12,4 @@
 ---
 
 
-[EasyCTF2018]({{ site.baseurl }}{% post_url 1970-01-01-WhoAmI %})
+[whoami]({{ site.baseurl }}{% post_url 1970-01-01-WhoAmI %})
