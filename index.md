@@ -21,7 +21,7 @@ Please ignore while I try to work out this ascii bit
 ``` 
 _`|___|`  >[whoami]({{ site.baseurl }}{% post_url 1970-01-01-WhoAmI %}) `______________________________________________________|___| `
 
-_`|   |`  >[twitter](https://twitter.com/eqqnq "twitter")`______________________________________________________|___|`
+_`|___|`  >[twitter](https://twitter.com/eqqnq "twitter")`______________________________________________________|___|`
 ```
 |   |                                                             |   |
 |   |                                                             |   |
