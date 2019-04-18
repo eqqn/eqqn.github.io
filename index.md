@@ -1,11 +1,14 @@
+# Write-ups
 
 [EasyCTF2018]({{ site.baseurl }}{% post_url 2018-02-15-easyCTF %})
 
 [Insomnihack2018]({{ site.baseurl }}{% post_url 2018-03-24-Inso %})
 
-[HaveIBeenPwned_adventures_with_Shodan]({{ site.baseurl }}{% post_url 2019-02-10-misadventures_of_shodan %})
-
 [The Nixu Challenge 2019 - Ports]({{ site.baseurl }}{% post_url 2019-04-04-Nixu9Ports %})
+
+# Blog
+
+[HaveIBeenPwned_adventures_with_Shodan]({{ site.baseurl }}{% post_url 2019-02-10-misadventures_of_shodan %})
 
 
 Please ignore while I try to work out this ascii bit 
@@ -17,8 +20,9 @@ Please ignore while I try to work out this ascii bit
 |   |                                                             |   |
 ``` 
 `|___|`  >[whoami]({{ site.baseurl }}{% post_url 1970-01-01-WhoAmI %}) `______________________________________________________|   | `
+
+`|   |`  >[twitter](https://twitter.com/eqqnq "twitter")`______________________________________________________|   |`
 ```
-|   |                                                             |   |
 |   |                                                             |   |
 |   |                                                             |   |
 |   |                                                             |   |
