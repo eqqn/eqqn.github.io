@@ -1,0 +1,29 @@
+<!doctype html>
+  <html>
+    <head>
+      <link rel="stylesheet" href="node_modules/xterm/dist/xterm.css" />
+      <script src="node_modules/xterm/dist/xterm.js"></script>
+    </head>
+    <body>
+      <div id="terminal"></div>
+      <script>
+        var term = new Terminal();
+        var randomness1=""
+        term.open(document.getElementById('terminal'));
+        term.write('Hello from \x1B[1;3;31mxterm.js\x1B[0m $ \n')
+        function matrix(){
+        characters = 'Ω≈ç√∫˜µ≤≥÷åß∂ƒ©˙∆˚¬…æœ∑´®†¥¨ˆøπ“‘¡™£¢∞§¶•ªº–≠¸˛Ç◊ı˜Â¯˘¿ÅÍÎÏ˝ÓÔÒÚÆ☃Œ„´‰ˇÁ¨ˆØ∏⁄€‹›ﬁﬂ‡°·‚—±田中さんにあげて下さいパーティーへ行かないか和製漢語部落格사회과학원 어학연구소찦차를 타고 온 펲시맨과 쑛다리 똠방각하社會科學院語學研究所울란바토르';
+        charactersLength = characters.length;
+        for (var i=0; i<30; i++){
+            randomness1+=characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        //randomness1= Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+        //randomness2= Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15)
+        //term.writeln('\x1B[1;3;31meqqn\x1B[0m $ \n')
+        term.writeln(randomness1)
+        //term.writeln('12345678901234567890123456789012345678901234567890\n')
+        }
+        var polling = setInterval(matrix, 16)
+      </script>
+    </body>
+</html>
