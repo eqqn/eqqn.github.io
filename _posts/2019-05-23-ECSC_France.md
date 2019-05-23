@@ -61,11 +61,15 @@ Inside the 5208 proccess dump we see
 
 ![Image](https://eqqn.github.io/images/ransom_endpoint.jpg)
 
+No luck decoding the payload, so lets try looking elsewhere. We divine that the ransomware is sending the encryption keys out to the C&C server.
 
+![Image](https://eqqn.github.io/images/ransom_note.jpg)
+
+![Image](https://eqqn.github.io/images/ransom_note_source.jpg)
 
 Part 3?
 
-
+![Image](https://eqqn.github.io/images/decrypted.JPG)
 
 I was using this blog series to learn more about volatility
 https://www.andreafortuna.org/2017/06/25/volatility-my-own-cheatsheet-part-1-image-identification/
