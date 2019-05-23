@@ -1,4 +1,4 @@
-# European Cyber Security Challenge Incident 3615 Forensics
+# ECSC France - Incident 3615
 
 The annual European Cyber Security Challenge holds a competition for selection of candidates.
 
