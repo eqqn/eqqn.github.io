@@ -41,7 +41,25 @@ If we look for *ZmxhZy5kb2N4* (new name of flag.docx) we find another reference 
 
 
 ## Part 2
-Part 2 of the challenge tasks you to recover the encryption key.
+Part 2 of the challenge tasks you to recover the encryption key, which is the next flag.
+
+
+
+ ( each proccess has a PID-proccess ID, and PPID - parent proccess ID 
+
+If you note the proccess tree, assistance.exe spawned a connhost.exe
+
+To see the network activity inside the memdump, use netscan command : 
+
+`volatility -f mem.dmp --profile Win10x64_14393 netscan`
+
+> 0xe0001265ad10     TCPv4    192.168.248.133:49774(local add)          192.168.1.25:8080(remote add)    ESTABLISHED      5208     assistance.exe 2019-05-08 20:00:17 UTC+0000
+
+We see assistance.exe calling to 192.168.1.25:8080. 
+
+Inside the 5208 proccess dump we see 
+
+![Image](https://eqqn.github.io/images/ransom_endpoint.jpg)
 
 
 
