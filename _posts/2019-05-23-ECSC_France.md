@@ -21,7 +21,7 @@ Volatility is a well known command line tool for memory analysis, and I am going
 
 For it to work, you need to load the memory dump with correct profile.
 `volatility -f mem.dmp imageinfo` will give you a suggestion to which profile you should use, however you should find which of the recommended profiles works best. 
-![Image](https://eqqn.github.io/images/volatility_profile.jpg)
+![Image](https://eqqn.github.io/images/volatility_profile.JPG)
 
 Next up is identifying which proccess is malicious. There is no magic way to do this, but we know the that the proccess is ransomware so it will be doing some encryption. Calls to crypto libraries and dll's can give it away. We also know that the file *flag.docx* was encrypted, so lets look for it.
 
@@ -32,7 +32,7 @@ To dump memory of a certain proccess use *memdump*. After dumping a few proccess
 `volatility -f mem.dmp --profile=Win10x64_10563 memdump -p 5208 -D` where 5208 is the proccess ID of "assistance.exe" ( sounds helpfully malicious now doesn't it?) 
 
 Looking for *flag.docx*  helps you find what happened to the filename
-![Image](https://eqqn.github.io/images/renaming_flag.jpg)
+![Image](https://eqqn.github.io/images/renaming_flag.JPG)
 
 and what happened to the rest of the files...
 
