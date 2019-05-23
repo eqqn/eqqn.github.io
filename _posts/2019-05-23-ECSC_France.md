@@ -60,6 +60,7 @@ No luck decoding the payload, so lets try looking elsewhere. But we can divine t
 I stumbled upon the ransom note somewhere in the dump:
 
 ![Image](https://eqqn.github.io/images/ransom_note.JPG)
+
 The identifier is a clue to finding the request sent to C&C server.
 
 And there is another version with it's original source code! It will be **very** useful later on.
@@ -97,11 +98,14 @@ The final result :
 
 ![Image](https://eqqn.github.io/images/decrypted.JPG)
 
-ECSC{M4udit3_C4mp4gn3_2_r4NC0nG1c13L} "The cursed ransomware campaign "
+ECSC{M4udit3_C4mp4gn3_2_r4NC0nG1c13L} "The cursed ransomware campaign"
+
 
 
 ### References
 I was using this blog series to learn more about volatility
-https://www.andreafortuna.org/2017/06/25/volatility-my-own-cheatsheet-part-1-image-identification/
+<https://www.andreafortuna.org/2017/06/25/volatility-my-own-cheatsheet-part-1-image-identification/>
 
+<https://www.andreafortuna.org/2017/07/03/volatility-my-own-cheatsheet-part-2-processes-and-dlls/>
+Theres 9 parts.
 
