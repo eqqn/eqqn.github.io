@@ -4,7 +4,7 @@ The annual European Cyber Security Challenge holds a competition for selection o
 
 Thanks to my friends, I learned about the French competition and was motivated to do some challenges.
 
-If you want to know how to use volatility to do memory dump forensics with a dash of ransomware, keep reading.
+If you want to know how to use volatility to do memory dump forensics with a dash of ransomware, keep reading. We will dive deep into ransomware infested memory and try to track the encryption key to save the day.
 
 
 ## Part 1
@@ -43,17 +43,11 @@ If we look for *ZmxhZy5kb2N4* (new name of flag.docx) we find another reference 
 ## Part 2
 Part 2 of the challenge tasks you to recover the encryption key, which is the next flag.
 
-
-
- ( each proccess has a PID-proccess ID, and PPID - parent proccess ID 
-
-If you note the proccess tree, assistance.exe spawned a connhost.exe
-
 To see the network activity inside the memdump, use netscan command : 
 
 `volatility -f mem.dmp --profile Win10x64_14393 netscan`
 
-> 0xe0001265ad10     TCPv4    192.168.248.133:49774(local add)          192.168.1.25:8080(remote add)    ESTABLISHED      5208     assistance.exe 2019-05-08 20:00:17 UTC+0000
+`0xe0001265ad10     TCPv4    192.168.248.133:49774(local add)          192.168.1.25:8080(remote add)    ESTABLISHED      5208     assistance.exe 2019-05-08 20:00:17 UTC+0000`
 
 We see assistance.exe calling to 192.168.1.25:8080. 
 
@@ -61,22 +55,53 @@ Inside the 5208 proccess dump we see
 
 ![Image](https://eqqn.github.io/images/ransom_endpoint.jpg)
 
-No luck decoding the payload, so lets try looking elsewhere. We divine that the ransomware is sending the encryption keys out to the C&C server.
+No luck decoding the payload, so lets try looking elsewhere. But we can divine that the ransomware is sending the encryption keys out to the C&C server.
 
 I stumbled upon the ransom note somewhere in the dump:
 
 ![Image](https://eqqn.github.io/images/ransom_note.JPG)
+The identifier is a clue to finding the request sent to C&C server.
 
-And there is another version with it's source code!
+And there is another version with it's original source code! It will be **very** useful later on.
 
 ![Image](https://eqqn.github.io/images/ransom_note_source.JPG)
 
 Looking for the identifier leads to the add keys api call in cleartext: 
 
 ![Image](https://eqqn.github.io/images/enckey.JPG)
-Part 3?
+
+This is the part that has tripped up some people. The key isn't clearly evident and the enckey string comes in a format as such:
+>cd18c00bb476764220d05121867d62de64e0821c53c7d161099be2188b6cac24cd18c00bb476764220d05121867d62de64e0821c53c7d161099be2188b6cac2495511870061fb3a2899aa6b2dc9838aa422d81e7e1c2aa46aa51405c13fed15b95511870061fb3a2899aa6b2dc9838aa422d81e7e1c2aa46aa51405c13fed15b
+
+Upon closer inspection you can notice that id is repeated across the string. If we look into original source of the ransomware at https://github.com/mauri870/ransomware/ and look for encryption key or decryption functions, you will see something similar 
+```
+		// Generate the id and encryption key
+		keys["id"], _ = utils.GenerateRandomANString(32)
+		keys["enckey"], _ = utils.GenerateRandomANString(32)
+```
+
+SO lets raise a hypothesis that key length is like in original, 32. If we remove repeating parts and user id from the string, we get 3 distinct 32char strings : 
+
+- 64e0821c53c7d161099be2188b6cac24
+- 95511870061fb3a2899aa6b2dc9838aa
+- 422d81e7e1c2aa46aa51405c13fed15b
+
+The 2nd one is the encryption key and validates the challenge.
+
+## Part 3
+
+The final task is to decrypt a file (flag.docx) given to us, that was encrypted by the ransomware.
+As the ransom note and code snippets state, it is encrypted in AES256-CTR mode. Analyzing the code we learn that the first AES block is used as Initialization Vector (IV), or a salt. Without writing too much code, I found a way to plug-in the file and key into the golang test files.
+
+The final result : 
 
 ![Image](https://eqqn.github.io/images/decrypted.JPG)
 
+ECSC{M4udit3_C4mp4gn3_2_r4NC0nG1c13L} "The cursed ransomware campaign "
+
+
+### References
 I was using this blog series to learn more about volatility
 https://www.andreafortuna.org/2017/06/25/volatility-my-own-cheatsheet-part-1-image-identification/
+
+
