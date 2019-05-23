@@ -65,11 +65,11 @@ No luck decoding the payload, so lets try looking elsewhere. We divine that the 
 
 I stumbled upon the ransom note somewhere in the dump:
 
-![Image](https://eqqn.github.io/images/ransom_note.jpg)
+![Image](https://eqqn.github.io/images/ransom_note.JPG)
 
 And there is another version with it's source code!
 
-![Image](https://eqqn.github.io/images/ransom_note_source.jpg)
+![Image](https://eqqn.github.io/images/ransom_note_source.JPG)
 
 Looking for the identifier leads to the add keys api call in cleartext: 
 
