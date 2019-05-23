@@ -1,10 +1,13 @@
 <!doctype html>
   <html>
     <head>
-      <link rel="stylesheet" href="https://raw.githubusercontent.com/eqqn/TerminalConsciousness/master/node_modules/xterm/dist/xterm.css" />
-      <script src="https://raw.githubusercontent.com/eqqn/TerminalConsciousness/master/node_modules/xterm/dist/xterm.js"></script>
+      <link rel="stylesheet" href="_includes/node_modules/xterm/dist/xterm.css" />
+      <script src="_includes/node_modules/xterm/dist/xterm.js"></script>
     </head>
     <body>
+    {% include node_modules/xterm/dist/xterm.css %}
+      {% include _includes/node_modules/xterm/dist/xterm.js %}
+    {{ content }}
       <div id="terminal"></div>
       <script>
         var term = new Terminal();
