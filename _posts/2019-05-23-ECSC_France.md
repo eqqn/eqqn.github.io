@@ -4,7 +4,7 @@ The annual European Cyber Security Challenge holds a competition for selection o
 
 Thanks to my friends, I learned about the French competition and was motivated to do some challenges.
 
-If you want to know how to use volatility to do memory dump forensics with a dash of ransomware, keep reading. We will dive deep into ransomware infested memory and try to track the encryption key to save the day.
+If you want to know how to use volatility to do memory dump forensics with a dash of ransomware, keep reading. We will dive deep into ransomware infested memory and try to track the encryption key to save the day, using volatility and simple text editor.
 
 
 ## Part 1
