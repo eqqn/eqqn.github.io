@@ -63,10 +63,17 @@ Inside the 5208 proccess dump we see
 
 No luck decoding the payload, so lets try looking elsewhere. We divine that the ransomware is sending the encryption keys out to the C&C server.
 
+I stumbled upon the ransom note somewhere in the dump:
+
 ![Image](https://eqqn.github.io/images/ransom_note.jpg)
+
+And there is another version with it's source code!
 
 ![Image](https://eqqn.github.io/images/ransom_note_source.jpg)
 
+Looking for the identifier leads to the add keys api call in cleartext: 
+
+![Image](https://eqqn.github.io/images/enckey.JPG)
 Part 3?
 
 ![Image](https://eqqn.github.io/images/decrypted.JPG)
