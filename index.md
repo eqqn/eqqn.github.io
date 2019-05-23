@@ -1,6 +1,6 @@
 # Write-ups
 
-[ECSC-France2019]({{ site.baseurl }}{% Update 2019-05-23-ECSC_France %})
+[ECSC-France2019 Forensics]({{ site.baseurl }}{% Update 2019-05-23-ECSC_France %})
 
 [EasyCTF2018]({{ site.baseurl }}{% post_url 2018-02-15-easyCTF %})
 
