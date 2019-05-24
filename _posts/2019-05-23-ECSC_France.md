@@ -94,11 +94,13 @@ The 2nd one is the encryption key and validates the challenge.
 The final task is to decrypt a file (flag.docx) given to us, that was encrypted by the ransomware.
 As the ransom note and code snippets state, it is encrypted in AES256-CTR mode. Analyzing the code we learn that the first AES block is used as Initialization Vector (IV), or a salt. Without writing too much code, I found a way to plug-in the file and key into the golang test files. 
 
+The ransomware repo also contains the build for unlocker, but word of caution - do you really want to run executables and scripts from a repository called "ransomware" on your machine? So read the code ( <https://github.com/mauri870/ransomware> ) find parts involving encryption/decryption and try for yourself.
+
 The final result : 
 
 ![Image](https://eqqn.github.io/images/decrypted.JPG)
 
-To try my solution for yourself, see <https://github.com/eqqn/ECSC-2019/tree/master/Incident_part3>
+To try my solution for yourself, see <https://github.com/eqqn/ECSC-2019/tree/master/Incident_part3>  There's not much code and no external packages.
 
 ECSC{M4udit3_C4mp4gn3_2_r4NC0nG1c13L} "The cursed ransomware campaign"
 
