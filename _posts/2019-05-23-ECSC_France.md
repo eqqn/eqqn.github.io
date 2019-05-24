@@ -100,7 +100,11 @@ The final result :
 
 ECSC{M4udit3_C4mp4gn3_2_r4NC0nG1c13L} "The cursed ransomware campaign"
 
+## Acknowledgements
+The challenge was fun, with lots of funny bits, like the ransom note and the "victim" looking up Incident response guides while the system is being encrypted.
+![Image](https://eqqn.github.io/images/bons_reflexes.JPG)
 
+Memory forensics is messy, process dumps are intertwined, so sometimes the data you are looking for can be mixed up with random artifacts. 
 
 ### References
 I was using this blog series to learn more about volatility
