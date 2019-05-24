@@ -92,11 +92,13 @@ The 2nd one is the encryption key and validates the challenge.
 ## Part 3
 
 The final task is to decrypt a file (flag.docx) given to us, that was encrypted by the ransomware.
-As the ransom note and code snippets state, it is encrypted in AES256-CTR mode. Analyzing the code we learn that the first AES block is used as Initialization Vector (IV), or a salt. Without writing too much code, I found a way to plug-in the file and key into the golang test files.
+As the ransom note and code snippets state, it is encrypted in AES256-CTR mode. Analyzing the code we learn that the first AES block is used as Initialization Vector (IV), or a salt. Without writing too much code, I found a way to plug-in the file and key into the golang test files. 
 
 The final result : 
 
 ![Image](https://eqqn.github.io/images/decrypted.JPG)
+
+To try my solution for yourself, see <https://github.com/eqqn/ECSC-2019/tree/master/Incident_part3>
 
 ECSC{M4udit3_C4mp4gn3_2_r4NC0nG1c13L} "The cursed ransomware campaign"
 
@@ -105,6 +107,7 @@ The challenge was fun, with lots of funny bits, like the ransom note and the "vi
 ![Image](https://eqqn.github.io/images/bons_reflexes.JPG)
 
 Memory forensics is messy, process dumps are intertwined, so sometimes the data you are looking for can be mixed up with random artifacts. 
+I find it funny how the "Academic" ransomware repo has 200+ forks :)) I guess there is a lot of crypto and infosec academics.
 
 ### References
 I was using this blog series to learn more about volatility
