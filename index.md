@@ -1,6 +1,7 @@
 # Write-ups
 
 #### Date V Descending
+[HackInParis#19 Wargame]({{ site.baseurl }}{% post_url 2019-06-21-HIP_wargame.md %})
 
 [ECSC-France2019 Exfiltration]({{ site.baseurl }}{% post_url 2019-05-27-ECSC_Exfiltration %})
 
