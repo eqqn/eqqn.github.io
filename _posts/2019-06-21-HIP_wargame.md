@@ -68,5 +68,5 @@ We get "rotROTrOtRotROTROtROTROTROTrotrOtRoTrot"  which validates the challenge!
 
 
 #### Outro
-Although I only solved the 3 most popular (read easy) challenges, I had exciting time learning about graphQL, introspection, running my own playground server, retrieving schemas and trying different approaches I found online. I hope to be able to learn from others' writeups on MeetMyDoctor #2 & #3.
+Although I only solved the 3 most popular (read easy) challenges, I had exciting time learning about graphQL, introspection, running my own playground server, retrieving schemas and trying different approaches I found online. I spent a lot of time trying "RootMyNeighbour" seeing if i can execute CVE-2018-1111 (because the only traffic I could sniff as a server was DHCP  requests, but I was misdirected, and french locale keyboard on a VM is worse than stepping on a lego) I hope to be able to learn from others' writeups on MeetMyDoctor #2 & #3.
 
