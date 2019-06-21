@@ -63,7 +63,7 @@ function check4(pwd) {
 We can see that var input and output are related - it is just a shift cipher - Caesar or ROT13 as commonly known. If we input the string it compares against back, it should be shifted the same amount - returning the plaintext
 
 If we put "ebgEBGeBgEbgEBGEBgEBGEBGEBGebgeBgEbGebg" as the argument of check4() 
-
+![Image](https://eqqn.github.io/images/defcon3.JPG)
 We get "rotROTrOtRotROTROtROTROTROTrotrOtRoTrot"  which validates the challenge!
 
 
