@@ -35,3 +35,38 @@ And receive a response of many doctors, plus their passwords
 ```
 
 ## Defcon 5
+![Image](https://eqqn.github.io/images/defcon1.JPG)
+
+In this challenge you have to go through levels 5 to 1 analyzing javascript code of a dashboard similar to NEXT GEN -1 DAYS SECURITY vendors.
+
+The first password is hiding in sourcecode at *static/js/script.js*  in clear: **STRONGPASSWORD**
+![Image](https://eqqn.github.io/images/defcon2.JPG)
+
+## Defcon 4
+Level 4 checking script is in the same file and looks like this:
+
+```
+function check4(pwd) {
+  var input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+  var output = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
+  var index = x => input.indexOf(x);
+  var translate = x => (index(x) > -1 ? output[index(x)] : x);
+  return (
+    pwd
+      .split("")
+      .map(translate)
+      .join("") === "ebgEBGeBgEbgEBGEBgEBGEBGEBGebgeBgEbGebg"
+  );
+}
+```
+
+We can see that var input and output are related - it is just a shift cipher - Caesar or ROT13 as commonly known. If we input the string it compares against back, it should be shifted the same amount - returning the plaintext
+
+If we put "ebgEBGeBgEbgEBGEBgEBGEBGEBGebgeBgEbGebg" as the argument of check4() 
+
+We get "rotROTrOtRotROTROtROTROTROTrotrOtRoTrot"  which validates the challenge!
+
+
+#### Outro
+Although I only solved the 3 most popular (read easy) challenges, I had exciting time learning about graphQL, introspection, running my own playground server, retrieving schemas and trying different approaches I found online. I hope to be able to learn from others' writeups on MeetMyDoctor #2 & #3.
+
