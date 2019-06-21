@@ -11,6 +11,9 @@ We are tasked to retrieve the site administrators password. We have a website wi
 
 However, there is a link "Try our API!", which gives us a nice [GraphQL playground](https://github.com/prisma/graphql-playground), 
 which allows us to see the API schema and construct the queries inside the browser. 
+
+![Image](https://eqqn.github.io/images/Doctor3.JPG)
+
 We get a list of doctors and their passwords by constructing this query:
 ``` 
 {
