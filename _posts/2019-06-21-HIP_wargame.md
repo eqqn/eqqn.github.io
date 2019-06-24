@@ -15,7 +15,7 @@ which allows us to see the API schema and construct the queries inside the brows
 ![Image](https://eqqn.github.io/images/Doctor3.JPG)
 
 We get a list of doctors and their passwords by constructing this query:
-``` 
+```js
 {
     doctors{
     firstName, 
@@ -26,7 +26,7 @@ We get a list of doctors and their passwords by constructing this query:
 
 And receive a response of many doctors, plus their passwords
 
-```
+```js
       {
         "firstName": "Admin",
         "lastName": "Admin",
@@ -45,7 +45,7 @@ The first password is hiding in sourcecode at *static/js/script.js*  in clear: *
 ## Defcon 4
 Level 4 checking script is in the same file and looks like this:
 
-```
+```js
 function check4(pwd) {
   var input = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
   var output = "NOPQRSTUVWXYZABCDEFGHIJKLMnopqrstuvwxyzabcdefghijklm";
