@@ -1,4 +1,4 @@
-This year SigSegv qualifiers are back 
+This year SigSegv qualifiers are back, 
 
 # XSS challenge: History of Browser Evolution
 
@@ -36,8 +36,8 @@ Since there is no obvious forms or input elements apparent, we look at the page 
         if (r != null) return r[2];
         return null;
     }
-
-    var layout = getUrlParam("layout");      //## This is where the URL parameter is taken
+    //## This is where the URL parameter is taken
+    var layout = getUrlParam("layout");
     var clean = DOMPurify.sanitize(layout);
     
     // Hehe I made a custom sanitizer, no worriez
@@ -91,6 +91,9 @@ Once we submit the full URL into the validator, a HTTP request is made to our co
 
 This was a fun challenge, and I got to learn XSS the fun way. 
 
+P.S.: Did you know that markdown in *GithubPages* runs any JS , inlucding unescaped`<script>alert("boxes")</script> ` , well now you know. 
+
+![Image](https://eqqn.github.io/images/hobe5.jpg)
 
 [1] Web Security Academy XSS cheat sheet https://portswigger.net/web-security/cross-site-scripting/cheat-sheet 
 
