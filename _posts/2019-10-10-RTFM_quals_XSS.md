@@ -91,7 +91,7 @@ Once we submit the full URL into the validator, a HTTP request is made to our co
 
 This was a fun challenge, and I got to learn XSS the fun way. 
 
-P.S.: Did you know that markdown in *GithubPages* runs any JS , inlucding unescaped`<script>alert("boxes")</script> ` , well now you know. 
+P.S.: Did you know that markdown in *GithubPages* runs any JS , including unescaped`<script>alert("boxes")</script> ` , well now you know. 
 
 ![Image](https://eqqn.github.io/images/hobe5.jpg)
 
