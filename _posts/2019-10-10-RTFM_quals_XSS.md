@@ -71,7 +71,7 @@ However it uses both **img** and **onerror** tags stripped by *NuclearSanitizer(
 
 ![Image](https://eqqn.github.io/images/hobe3.jpg)
 
-`?layout=<svg></p><style><a id="</style><iframe src=1 onmouseover=alert(333)>"> `
+`?layout=<svg></p><style><a id="</style><iframe src=1 onmouseover=alert(1)>"> `
 With this I popped the first alert. DOMPurify is bypassed. Great, now to make it run without interaction and onto exfiltration. In this part you can get creative.
 
 To steal the cookie, you need to make a request and transfer it to a domain you control. A convenient web service for that is "Requestbin", which allows you to make receive requests on their servers.
