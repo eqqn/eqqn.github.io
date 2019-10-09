@@ -86,7 +86,7 @@ Once we submit the full URL into the validator, a HTTP request is made to our co
 
 ![Image](https://eqqn.github.io/images/hobe4.jpg)
 
-#####flag=sigsegv{pur1fy_mY_s0ul}
+##### flag=sigsegv{pur1fy_mY_s0ul}
 
 
 This was a fun challenge, and I got to learn XSS the fun way. 
