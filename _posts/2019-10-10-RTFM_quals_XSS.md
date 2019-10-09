@@ -54,7 +54,7 @@ Queries such as ` http://qual-challs.rtfm.re:8080/?layout=YOURSTRINGHERE ` will 
 ![Image](https://eqqn.github.io/images/hobe2.jpg)
 
 However there is pesky **DOMPurify.sanitize(layout);** getting in our way of triggering the desired alert(1) box.
-After giving automated tools a try ( XSStrike and Burpsuite) and trying to concatenate some form of <script>alert(222)</script> to render on the page I kept getting owned by the sanitizer. 
+After giving automated tools a try ( XSStrike and Burpsuite) and trying to concatenate some form of `<script>alert(222)</script> `to render on the page I kept getting owned by the sanitizer. 
 
 Alternatives from XSS cheat sheets[1][2]( that apply to chrome) didn't seem to work. However my friend point me to an interesting resource - DOMPurify bypass.
 
