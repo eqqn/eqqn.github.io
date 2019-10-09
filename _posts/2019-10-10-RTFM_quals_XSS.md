@@ -1,5 +1,4 @@
 This year SigSegv qualifiers are back 
-![alt text](https://qual.rtfm.re/e1aa117bd9a44018e2e64d8a1b95d8c8/logo.png)
 
 # XSS challenge: History of Browser Evolution
 
