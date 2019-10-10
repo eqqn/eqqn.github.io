@@ -1,6 +1,6 @@
 This year SigSegv qualifiers are back, 
 
-# XSS challenge: History of Browser Evolution
+# XSS challenge: Theory of Browser Evolution
 
 You are tasked to steal the cookie from a web page. The target machine is running "Chrome with recent updates", so it is advisable to test it in chrome.
 
