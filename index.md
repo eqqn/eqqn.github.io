@@ -28,5 +28,3 @@
 
 [twitter](https://twitter.com/eqqnq "twitter")
 
-  
-[whoami]({{ site.baseurl }}{% post_url 1970-01-01-WhoAmI %})
