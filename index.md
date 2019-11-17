@@ -2,6 +2,8 @@
 
 #### Date V Descending
 
+[GreHack19 Time Wasting Bot]({{ site.baseurl }}{% post_url 2019-11-17-GreHack19 %})
+
 [SigSegv2 Qualifiers XSS write-up]({{ site.baseurl }}{% post_url 2019-10-10-RTFM_quals_XSS %})
 
 [HackInParis#19 Wargame]({{ site.baseurl }}{% post_url 2019-06-21-HIP_wargame %})
