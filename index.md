@@ -2,7 +2,7 @@
 
 #### Date V Descending
 
-[GreHack19 Yurevent]({{ site.baseurl }}{% % post_url 2019-11-17-GreHack19_Web %})
+[GreHack19 Yurevent]({{ site.baseurl }}{% post_url 2019-11-17-GreHack19_Web %})
 
 [GreHack19 Time Consuming Bot]({{ site.baseurl }}{% post_url 2019-11-17-GreHack19 %})
 
