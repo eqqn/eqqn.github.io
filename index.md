@@ -25,6 +25,8 @@
 
 # Blog
 
+[My OSCP Journey]({{ site.baseurl }}{% post_url 2020-06-30-OSCP-journey %})
+
 [HaveIBeenPwned_adventures_with_Shodan]({{ site.baseurl }}{% post_url 2019-02-10-misadventures_of_shodan %})
 
 
