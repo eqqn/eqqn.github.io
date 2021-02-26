@@ -18,6 +18,9 @@
     <meta name="description" content="A blog by Cybersecurity professional about Capture-the flag(CTF), wargames and hacking.">
     <link rel="stylesheet" type="text/css" media="screen" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
 {% seo %}
+{% if site.google_analytics and jekyll.environment == 'production' %}
+{% include analytics.html %}
+{% endif %}
   </head>
 
   <body>
