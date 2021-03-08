@@ -75,7 +75,8 @@ Google is also beta-testing "Auto-pilot clusters" where they take over the heavy
 
 So the last few mitigations might be a necessary evil, if you don't want to leak all your secrets thanks to a single access token. I have yet to test how well they work.
 
-References and comments: 
+### References and comments: 
+
 [1] https://about.gitlab.com/blog/2020/02/12/plundering-gcp-escalating-privileges-in-google-cloud-platform/
 
 [2] It's synthetic, but you don't want to deploy actually vulnerable applications on your cloud :) Yes, it's easier to just 
