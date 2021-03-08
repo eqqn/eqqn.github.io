@@ -29,7 +29,7 @@ To narrow it down, we want to look at the access scopes available to our instanc
 IF we have devstorage.read permissions it means we can read storage on our project.
 
 Now since our storage is not public ( otherwise we wouldn't be doing this ), we need to authenticate ourselves against the google storage APIs.
-Thats where metadata service steps in, providing us a JWToken that allows us to call google APIs on behalf of the instance. 
+Thats where metadata service steps in, providing us a Token that allows us to call google APIs on behalf of the instance. 
 
 `curl "http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token" -H "Metadata-Flavor: Google"`
 
