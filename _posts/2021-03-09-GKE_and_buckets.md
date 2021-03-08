@@ -49,7 +49,9 @@ We see the file "bucketfile.txt", so lets grab it using curl:
 
 `curl -X GET -H "Authorization: Bearer <<TOKEN>>" -o "bucketfile.txt" "https://www.googleapis.com/storage/v1/b/<<OBJECT_NAME>>/o/bucketfile.txt?alt=media"`
 
-![Bucket Contents](https://eqqn.github.io/images/bucket_data_contents.png)  ( the file contents is "my secret bucket data" string) 
+![Bucket Contents](https://eqqn.github.io/images/bucket_data_contents.png)  
+
+( the file contents is "my secret bucket data" string) 
 
 ### Summary
 
