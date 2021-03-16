@@ -69,11 +69,17 @@ This is useful when you have read-only filesystems, no write access , etc.
 Partial mitigation exists, like fine-grained access rights on bucket ( are you using them?). You can also restrict the access rights for the 
 node pool, by adding a service account to it with a different set of permissions. [[3]](https://cloud.google.com/kubernetes-engine/docs/how-to/protecting-cluster-metadata)
 
-Workload identity is another candidate [[4]](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) and requires extensive setup.
+Workload identity is another candidate [[4]](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) and requires some setup.
 
 Google is also beta-testing "Auto-pilot clusters" where they take over the heavy lifting in terms of hardening. 
 
-So the last few mitigations might be a necessary evil, if you don't want to leak all your secrets thanks to a single access token. I have yet to test how well they work.
+So the last few mitigations might be a necessary evil, if you don't want to leak all your secrets thanks to a single access token.
+
+### Enabling workload identity
+
+If you follow the steps to enable workload identity on your cluster, you can shut down this attack. Workload identity replaces GCP metadata service with GKE cluster own metadata service. It intercepts any requests made to metadata endpoint and limits to the scopes the service account has. You can still authenticate against google services if you give your service identity the necessary permissions, but it is not enabled by default and will prevent the metadata based attacks. Your retrieved token will be different and have limited scopes. If we try the same attack again we will result in **403 - Forbidden**. 
+
+![Bucket access denied](https://eqqn.github.io/images/access_denied_workload_identity.png)  
 
 ### References and comments: 
 
