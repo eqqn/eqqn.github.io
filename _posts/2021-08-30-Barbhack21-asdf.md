@@ -56,7 +56,7 @@ unzip sample.docx
 zip -r evil.docx *
 ```
 
-The title of sample.docx is *"try asdf!"*, which can be found in *docProps/core.xml*.
+The title of sample.docx is *"try asdf!"*, which can be found in **docProps/core.xml**.
 
 Php code in title didnt display/work(?) so after some research I tried XXE.. [1]
 
@@ -64,7 +64,7 @@ Php code in title didnt display/work(?) so after some research I tried XXE.. [1]
 
 A quick search for "docx exploit php" will return some results, mostly relating to XXE. 
 
-We modify the original core.xml to include the XXE string  `<!DOCTYPE test [<!ENTITY test SYSTEM 'file:///etc/passwd'>]> ` AND to call the XXE we add `&test;` to the `<dc:title>` element.
+We modify the original **core.xml** to include the XXE string  `<!DOCTYPE test [<!ENTITY test SYSTEM 'file:///etc/passwd'>]> ` AND to call the XXE we add `&test;` to the `<dc:title>` element.
 
 ```
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -75,6 +75,7 @@ We modify the original core.xml to include the XXE string  `<!DOCTYPE test [<!EN
 ```
 
  ![passwd](https://eqqn.github.io/images/brb21passwd.jpg)
+ 
  
  We confirmed that it works, now which file to retrieve? Root-me always tells us to go after the source code first, so lets do that. 
  
@@ -137,6 +138,8 @@ if (isset($_GET['1ca251e66938b115ebd89c8f5bb3c7f9b0f6ab4398104d4c254cdbc5e655517
 }
 ```
 
+#### Flag
+**brb{1a220d9f34642289094b8b6d0d43439b}**
 
 ### Credits
 
