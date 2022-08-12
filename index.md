@@ -2,7 +2,7 @@
 
 #### Date V Descending
 
-[T3N4CI0US CTF - Escape]({{ site.baseurl }}{% 2022-08-12-T3n4ci0us_CTF %})
+[T3N4CI0US CTF - Escape]({{ site.baseurl }}{% post_url 2022-08-12-T3n4ci0us_CTF %})
 
 [Barbhack21 asdf! - XXE]({{ site.baseurl }}{% post_url 2021-08-30-Barbhack21-asdf %})
 
