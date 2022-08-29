@@ -32,7 +32,7 @@ import array as arr
 #server_address = ('challenges.REDACTED.com', 4747)
 #print('connecting to {} port {}'.format(*server_address))
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('challenges.hackrocks.com', 4747)
+server_address = ('challenges.REDACTED.com', 4747)
 sock.connect(server_address)
 sock.settimeout(1)
 
@@ -113,7 +113,8 @@ I converted the characters to hex
 > 
 > In addition to the information of pcap, the attacker may have implemented a C2. 
 
-You have a pcap file ( link) 
+You have a pcap file  [link](https://github.com/eqqn/eqqn.github.io/blob/master/uploads/log.pcap) 
+
 
 
 
