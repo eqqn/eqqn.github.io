@@ -115,6 +115,8 @@ Looking at HTTP and TCP streams, it is is clear something was downloaded. Wiresh
 
 Opening the file, it looks like a zip archive with some "zzzzzzzzz" padded before regular file contents which begin with PK. We also have a sneak peak that there is `stolen/flag.txt`
 
+https://users.cs.jmu.edu/buchhofp/forensics/formats/pkzip.html
+
 ![Image](https://eqqn.github.io/images/amAPTstolentxt.png)
 
 You can probably guess that we saw the password in the TCP session because it was sent over plaintext. We use it to decrypt the file.
