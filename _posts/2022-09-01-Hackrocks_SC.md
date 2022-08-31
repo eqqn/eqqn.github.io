@@ -2,7 +2,7 @@
 
 ### intro
 It's the summer, and there are many conferences and CTF's going on. This summer I was moving, changing jobs and had to 
-miss out on the French side of scene, but managed to poke at couple CTF's for fun. Summer cyber camp was good, since over the month
+miss out on the French side of scene, but managed to poke at couple online CTF's for fun. Summer cyber camp was good, since over the month
 there was plenty of time to come back to challenges after busy periods are over.
 
 ## Arith, 30 points, Easy
@@ -12,7 +12,7 @@ there was plenty of time to come back to challenges after busy periods are over.
 > 
 > The game can be found at:
 > 
-> challenges.REDACTED.com:4747
+> challenges.hackrocks.com:4747
 
 Easy way to interact with a server is *nc* - netcat command.
 
@@ -25,19 +25,13 @@ import socket
 import time
 import array as arr
 
-# Create a TCP/IP socket
-#sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
 # Connect the socket to the port where the server is listening
-#server_address = ('challenges.REDACTED.com', 4747)
-#print('connecting to {} port {}'.format(*server_address))
 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-server_address = ('challenges.REDACTED.com', 4747)
+server_address = ('challenges.hackrocks.com', 4747)
 sock.connect(server_address)
 sock.settimeout(1)
 
-
-cci=8
+cci=8  # current correct array index
 counter=0
 #lst= [103, 109, 98, 104, 124, 37, 86, 67, 54, 56, 50, 85, 118, 85, 52, 96, 99, 122, 96, 49, 111, 52, 126] #completed list
 
@@ -46,7 +40,7 @@ lst = [103,109,98,104,124,37,86,67,54] # incomplete list if you want to run it y
 def reconnect():
     global sock
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server_address = ('challenges.REDACTED.com', 4747)
+    server_address = ('challenges.hackrocks.com', 4747)
     sock.connect(server_address)
     time.sleep(0.2)
     return sock
@@ -101,7 +95,7 @@ Cheeky, but doesn't look too hard. We have a bunch of numbers, 37 to 126. That's
 I found the one. 
 https://www.dcode.fr/ascii-shift-cipher
 
-I converted the characters to hex
+I converted the characters to hex before passing them through decoders.
 
 `67 6D 62 68 7C 25 56 43 36 38 32 55 76 55 34 60 63 7A 60 31 6F 34 7E`
 
@@ -115,6 +109,20 @@ I converted the characters to hex
 
 You have a pcap file  [link](https://github.com/eqqn/eqqn.github.io/blob/master/uploads/log.pcap) 
 
+Looking at HTTP and TCP streams, it is is clear something was downloaded. Wireshark allows you to export HTTP objects (files) that are not encrypted, and we recover "*stashed.bin*". 
+
+![Image](https://eqqn.github.io/images/ace-tcp.png)
+
+Opening the file, it looks like a zip archive with some "zzzzzzzzz" padded before regular file contents which begin with PK. We also have a sneak peak that there is `stolen/flag.txt`
+
+![Image](https://eqqn.github.io/images/amAPTstolentxt.png)
+
+You can probably guess that we saw the password in the TCP session because it was sent over plaintext. We use it to decrypt the file.
+
+`flag{c0rrupt3d_zip_4nd_extr4cted_m4lware}` 
+
+This was a bit too easy and done in under 20 minutes.
+
 ## Screamshot, 65 points, medium
 
 > The web itself was exposed but no suspicious nor malicious activities...
@@ -124,18 +132,28 @@ You have a pcap file  [link](https://github.com/eqqn/eqqn.github.io/blob/master/
 This was by far the best chall for me. You have a website with open registration, and you can register as a user. 
 However, the feature panel is for admin only. You are also given partial application source code https://github.com/eqqn/eqqn.github.io/tree/master/uploads/screamshot-participant .
 
-Initially I tried to execute some SSTI strings on the username/email/bio fields, but it wasn't working.
+Initially I tried to execute some SSTI strings on the username/email/bio fields, but it wasn't working. I tried to crack the JWT token secret with john-the-ripper and wordlists, as well as some brute force cracking, without much results.
 
 I put the challenge on hold. I used one of the hints and it was telling that I should enumerate the application some more.
 
 >  Clue nº 1
 > All you need is basic to advance directory knocking to your web infrastructure like “/.git” (NO FUZZERS ALLOWED)
 
-The " NO FUZZERS" statement didn't get across to me and I wasted a few scans trying to find some hidden directory.
+The "NO FUZZERS" statement didn't get across to me and I wasted a time and CTF infra running scans trying to find some hidden directory.
 
 It is apparent that my enumeration methods are a bit dated and I need a better wordlist.
 
-I also tried some suspected python files but nothing sticked. After some conversation with another competitor, it was clear I was very close.
+I also tried some suspected python files but nothing sticked related to config, dependencies, routing. After some conversation with another player, it was clear I was very close.
+I retried with different ideas sometime later and found `http://challenges.hackrocks.com:9998/.env` file containing a secret JWT key.
+
+`JWT_KEY = S3crEt_t0K3n$$$$`  . I used it to change my JWT token cookie and sign it on jwt.io  I also incremented the validity time to last me for the rest of CTF :)
+
+![Image](https://eqqn.github.io/images/screamshot_admin_jwt.png)
+
+#### admin panel
+
+#### exploitation
+
 
 ## ACE-ng, 55 points, medium
 
