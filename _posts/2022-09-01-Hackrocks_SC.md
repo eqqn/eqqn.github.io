@@ -121,7 +121,7 @@ You can probably guess that we saw the password in the TCP session because it wa
 
 `flag{c0rrupt3d_zip_4nd_extr4cted_m4lware}` 
 
-This was a bit too easy and done in under 20 minutes.
+I've flagged it under 20 minutes and it was a slight confidence boost.
 
 ## Screamshot, 65 points, medium
 
