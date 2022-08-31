@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #012b03;
+}
+
+.topnav a {
+  float: right;
+  color: #fff;
+  text-align: center;
+  font-family: 'Exo', sans-serif;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #fff;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #5379fa;
+  color: white;
+}
+
+.Home {
+  font-family: 'Exo', sans-serif;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 200;
+  margin-top: 10px;
+  
+}
+
+.datainput{
+  position: absolute;
+  top: calc(50% - 100px);
+  left: calc(50% - 180px);
+  height: 150px;
+  width: 350px;
+  padding: 10px;
+  z-index: 2;
+}
+
+.datainput h4{
+  margin: centre;
+}
+
+.datainput input[type="text"]{
+  width: 250px;
+  height: 30px;
+  border: 1px rgba(255,255,255,1.0);
+  border-radius: 10px;
+  font-family: 'Exo', sans-serif;
+  padding: 2px;
+  margin: 4px 0;
+  outline: none;
+
+}
+.datainput input[type="text"]{
+  outline: none !important;
+    border:1px solid black;
+}
+
+.datainput button{
+  width: 100px;
+  height: 35px;
+  background: #5379fa;
+  border: 1px solid #fff;
+  cursor: pointer;
+  border-radius: 10px;
+  color: #fff;
+  font-family: 'Exo', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 6px;
+  margin-top: 10px;
+}
+
+.datainput button:hover{
+  opacity: 0.8;
+}
+
+.datainput button:active{
+  opacity: 0.6;
+}
+
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <a href="/logout">Log out</a>
+  <a href="/user">{{USERNAME_PARSE}}</a>
+  <a class="active" href="/admin">Panel</a>
+  <a href="/home">Home</a>
+
+</div>
+
+<div class="Home">
+  <h2>ScreamShot</h2><br>
+  <h3>WARNING: this features uses imgkit and wkhtmltopdf which is not fully tested and completed</h3>
+  <div>
+    <br><br><img src="{{ url_for('static', filename=RESULT) }}"><br><br>
+  </div>
+
+  <form action="/admin" method="POST">
+    <div class="datainput">
+      <h4>URL  </h4>
+      <input type="text" placeholder="url" name="url">  
+      <h4>output  </h4>
+      <input type="text" placeholder="output" name="output"> 
+      <h4>config path(optional)  </h4>
+      <input type="text" placeholder="path" name="wkhtmltoimage"> <br><br>
+      <button> Submit </button>
+      
+    </div>
+    
+  </form>
+  
+ 
+</div>
+
+<br><br><p> {{ ERROR_RESULT}}</p><br><br>
+</body>
+</html>
