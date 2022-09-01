@@ -248,23 +248,27 @@ You are provided with a file https://github.com/eqqn/eqqn.github.io/blob/master/
 
 Not entirely sure how to interact with the file, I decided to run it[1] . I noticed some libraries being written and loaded when following it's debug outputs, and seeing the message output. However, the files were prompty removed. I inserted some breakpoints to grab the files before they are deleted. 
 
-< screenshot for btc address > 
+![Image](https://eqqn.github.io/images/ace_var.JPG)
 
-< pic of folder struct>
+Also it writes a message to `/var/message.txt` containing:
 
-decompiling the pyc files with uncompyle6
+![Image](https://eqqn.github.io/images/ace_btc.JPG)
+
+#### decompiling the pyc files with uncompyle6
+
+![Image](https://eqqn.github.io/images/ace_folders.JPG)
 
 While I understood the application a bit better, none of the libraries contained something I could latch on. I put the challenge on hold, took the hints.
-
-I also ran the file as root
-
-<screenshot>
-    
-There goes my VM... 
 
 #### Correcting the course
 
 After some time, I decided to research more into pytohn decompilation, which is in line with the hint. Maybe there is a way to decompile it differently?
+
+Hacktricks had some notes on python decompilation and it was different from what I tried.
+
+https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/specific-software-file-type-tricks/.pyc
+
+`pyi-archive_viewer` worked so well, and I was looking at a python archive all along.
 
 
 
