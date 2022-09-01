@@ -1,8 +1,8 @@
 # Hackrocks Cyber Summer Camp 2022
 
 ### intro
-It's the summer, and there are many conferences and CTF's going on. This summer I was moving, changing jobs and had to 
-miss out on the French side of scene, but managed to poke at couple online CTF's for fun. Summer cyber camp was good, since over the month
+It's the summer, and there are many conferences and CTFs going on. This summer I was moving, changing jobs and had to 
+miss out on the French side of scene, but managed to poke at couple online CTFs for fun. Summer cyber camp was good, since over the month
 there was plenty of time to come back to challenges after busy periods are over.
 
 ## Arith, 30 points, Easy
