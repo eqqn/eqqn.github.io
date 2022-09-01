@@ -278,7 +278,7 @@ I extracted some files, some already seen before. I also pointed it to the "extr
 
 ![Image](https://eqqn.github.io/images/ace_hexed.png)
 
-Unhex the code with Cyberchefand you get
+Unhex the code with Cyberchef and you get
 
 ```python
 #import ctypes
