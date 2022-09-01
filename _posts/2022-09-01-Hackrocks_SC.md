@@ -246,7 +246,7 @@ You are provided with a file https://github.com/eqqn/eqqn.github.io/blob/master/
 
 #### Going off the wrong path
 
-Not entirely sure how to interact with the file, I decided to run it[1] . I noticed some libraries being written and loaded when following it's debug outputs, and seeing the message output. However, the files were prompty removed. I inserted some breakpoints to grab the files before they are deleted. 
+Not entirely sure how to interact with the file, I decided to run it[1][2] . I noticed some libraries being written and loaded when following it's debug outputs, and seeing the message output. However, the files were prompty removed. I inserted some breakpoints to grab the files before they are deleted. 
 
 ![Image](https://eqqn.github.io/images/ace_var.JPG)
 
@@ -335,8 +335,7 @@ print("Decrypted message: ", output_data)
 Decryption based on https://stackoverflow.com/questions/72111390/is-it-possible-to-decrypt-a-base-64-text-with-a-key-and-aes-standard 
 because the 2nd encode() operation instead of decode() was not something obvious or intuitive to me. 
 
-
-triton malware mention. f-secure blog link? 
+Overall, this lead me to expand my knowledge a bit on python malware occuring in the wild, especially the kind that targets industrial systems. [3](https://blog.f-secure.com/how-to-decompile-any-python-binary/) [4](https://www.mandiant.com/resources/blog/attackers-deploy-new-ics-attack-framework-triton)
     
 https://blog.f-secure.com/how-to-decompile-any-python-binary/
     
@@ -345,9 +344,18 @@ https://www.mandiant.com/resources/blog/attackers-deploy-new-ics-attack-framewor
 
 ### Acknowledgements
 
+This was a *rather good* CTF. I also ranked 13th as a solo player where teams were allowed. (out of 105 teams who validated something... and the "easiest" flag was writing a TCP client ;) )
 
+![Image](https://eqqn.github.io/images/nanomachines.JPG)
 
+Also thanks to another player, with who I exchanged some ideas and was good to keep motivation.
 
 
 
 [1] In retrospect that is not very smart.
+
+[2] Guess if I ran it with sudo for science. Curiosity kills the VM.
+
+[3] https://blog.f-secure.com/how-to-decompile-any-python-binary/
+    
+[4] https://www.mandiant.com/resources/blog/attackers-deploy-new-ics-attack-framework-triton
