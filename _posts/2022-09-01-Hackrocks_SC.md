@@ -264,7 +264,7 @@ While I understood the application a bit better, none of the libraries contained
 
 #### Correcting the course
 
-After some time, I decided to research more into pytohn decompilation, which is in line with the hint. Maybe there is a way to decompile it differently?
+After some time, I decided to research more into python decompilation, which is in line with the hint. Maybe there is a way to decompile it differently?
 
 Hacktricks had some notes on python decompilation and it was different from what I tried.
 
