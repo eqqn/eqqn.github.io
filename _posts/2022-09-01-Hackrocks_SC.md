@@ -211,7 +211,7 @@ The wkhtmltoimage parameter that we control should point to a binary. What if we
 
 Bash tries to execute every line in a file, with these inputs and outputs the errors. Leaking part of the file, but crashes halfway due to brackets being present in the script. Why not try `/bin/cat` , `/bin/ls`? We only get response when the command fails, and we still don't know where the flag is. To make things more tricky, it is hard to use `url` parameter to make more advanced commands because some special characters are getting sanitized. We need a more reliable way to exfiltrate data.
 
-If we review the code, we see that `output` parameter will output the command output to "/static" folder with output as parameter. 
+If we review the code, we see that `output` parameter will create a file in "/static" folder with input as a filename (if command passes without errors).
 
 ```python
 imgkit.from_url(uri, str('./static/'+output), config=config)
