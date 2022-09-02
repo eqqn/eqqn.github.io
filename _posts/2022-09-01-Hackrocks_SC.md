@@ -18,7 +18,7 @@ Easy way to interact with a server is *nc* - netcat command.
 
 ![Image](https://eqqn.github.io/images/asym_wrong_guess.JPG)
 
-23 numbers guessing game over TCP?  Time to write a bot... 
+23 numbers guessing game over TCP?  Time to write a bot... After poking around I found the first correct number. It seems the sequence of numbers doesn't change.
 
 ```python
 import socket
