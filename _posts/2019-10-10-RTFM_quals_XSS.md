@@ -65,8 +65,9 @@ There is an excellent write-up describing a recent vulnerability in DOMPurify, t
 More on this behaviour here : https://research.securitum.com/dompurify-bypass-using-mxss/
 
 So the PoC payload referenced in the article looks like this : 
-
+```
 ` <svg></p><style><a id="</style><img src=1 onerror=alert(1)>"> `
+```
 However it uses both **img** and **onerror** tags stripped by *NuclearSanitizer()*, so we can look once again at the cheat sheets and find other components that could do the trick. 
 
 ![Image](https://eqqn.github.io/images/hobe3.jpg)
