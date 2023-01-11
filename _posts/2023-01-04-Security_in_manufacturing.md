@@ -76,3 +76,4 @@ Container scans
 
 ### Links , references
 [GitHub](https://github.com/) 
+[Cool PLC security talk](https://www.youtube.com/watch?v=JtsyyTfSP1I)
