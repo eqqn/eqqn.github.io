@@ -23,12 +23,13 @@ Additionally, turnkeys and emergency shutdown switches are there to ensure safet
 TNC host executes the design and jobs loaded onto the machine, displays status, allows to edit job instructions/code and so on.
 ![TNC](https://eqqn.github.io/images/siemens-neu_7.jpg)
 
-### So what about the security?
+## So what about the security?
 
 When assessing such machines from security point of view, a series of questions arises:
 - how the machine is connected to the rest of the network
 - what ports and [protocols](https://en.wikipedia.org/wiki/Category:Industrial_Ethernet) does it expose? Proprietary or open? Fieldbus, modbus, etherCAT, profinet, OPC-UA, MTconnect?
-- standard services running? VNC, ssh, SMB, ftp? [automation protocols](https://en.wikipedia.org/wiki/List_of_automation_protocols)?
+- standard services running? VNC, ssh, SMB, ftp? 
+- APIs, [automation protocols](https://en.wikipedia.org/wiki/List_of_automation_protocols)?
 
 As you need to transport the job files to the machine ( a complex job or job sequences can be gigabytes!), you need connectivity. There are probably multiple CAD/CAM engineers who will need access. On the other hand, the job files are intellectual property allowing to replicate the part. Which can be a mold for a soda bottle, or turbine for an airplane. 
 
@@ -40,9 +41,12 @@ And is just scratching the surface.
 
 Whether you call it Cloud, Digital Transformation, Manufacturing 4.0... It's there. Across the industry, the untapped potential for better automation, big data analytics and ERP integration is there. But it's also hampered by lack of interoperability on many levels, as well as valid security concerns.
 
-Try to find [top 10 CNC machine brands](https://www.stylecnc.com/blog/top-10-best-cnc-machine-manufacturers-brands.html). I personally don't know half of the list and could add a bunch of more. And that's not even covering high-performance segments. Or different workflows - it's not just milling, but also grinding, [wire EDM](https://en.wikipedia.org/wiki/Electrical_discharge_machining)(not dance music) and laser/additive(think of 3D printing with metal powders heated by laser!) manufacturing. Each of these segments are even further fragmented with their own data pipelines, controls and protocols.
+Try to find [top 10 CNC machine brands](https://www.stylecnc.com/blog/top-10-best-cnc-machine-manufacturers-brands.html). I personally don't know half of the list and could add a bunch of more. And that's not even covering high-performance segments. Or different workflows - it's not just milling, but also grinding, [wire EDM](https://en.wikipedia.org/wiki/Electrical_discharge_machining)(not dance music) and laser/additive(think of 3D printing with metal powders heated by laser!) manufacturing. These machines are even more specialized and made by smaller companies.
+As there are no prevailing common standard, we have many different data pipelines, controls, APIs and protocols.
 
-Because of a fragmented market it is probably not at the forefront of software industry
+Because of a fragmented market it is probably not at the forefront of software industry[citation needed]
+
+
 
 ### lifecycle of a machine
 
@@ -61,7 +65,10 @@ Players , cloud providers.
 
 Security teams
 
+## silver lining
 
+standardisation is developing, some open protocols, big investments are coming from cloud providers.
+Instead of every tool manufacturing coming with their own platform, some independent entities trying to connect them all are springing up.
 
 ### DevSecOps
 
