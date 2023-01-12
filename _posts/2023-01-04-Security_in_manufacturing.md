@@ -34,6 +34,8 @@ When assessing such machines from security point of view, a series of questions 
 
 As you need to transport the job files to the machine ( a complex job or job sequences can be gigabytes!), you need connectivity. There are probably multiple CAD/CAM engineers who will need access. On the other hand, the job files are intellectual property allowing to replicate the part. Which can be a mold for a soda bottle, or turbine for an airplane. 
 
+Authenticated sessions and security considerations seem to be a rather recent development for some control providers.
+
 Depending on spec or requirements, additional software can be installed - easier calibration tools, clients, license managers, even [app stores](https://www.okuma.com/okuma-app-store) .
 
 And is just scratching the surface.
@@ -67,39 +69,44 @@ The networks in which these machines operate are also rather diverse. Each of th
 
 A tool shop with 5 machines from one brand will probably be different from one combining multiple machine vendors and processes into one megafactory. 
 
-Different network models , trends , expectations, realities. 
+Air gapped networks and strict network segregation between IT/OT is widely used in mature organizations with strict security requirements. This makes it harder for machine providers to support remote servicing, get machine data that would feed into planning, inventory management and business ERP systems. 
 
-Software - non software companies, IT departments, differences and challenges. All likelyhood OT is behind IT ( evidence in popular research? ) 
+Conversely, small shops might opt for a plug-and-play experience and more on-line features.
 
-Players , cloud providers.
+### Lifecycle of a machine
 
-Security teams
+Because machines are built to last and cost large amounts of money, it is not uncommon to see older models still operating, being leased or resold. With replacement parts and proper maintenance, it can rightfully outlast consumer hardware, but software does not age like wine... But any updates or instability could have issues on performance. While software updates are possible, replacing core computing components is unheard of, due to complex wiring, calibration and conditions that can only be provided in the OEM facility.
 
-## silver lining
+## Edge devices 
 
-standardisation is developing, some open protocols, big investments are coming from cloud providers.
-Instead of every tool manufacturing coming with their own platform, some independent entities trying to connect them all are springing up.
+Luckily, there are some good solutions to counter some of the problems. Edge device in front of the machine to handle secure communication, extensibility and PKI based connectivity to cloud networks. This circumvents the limitations of HMI/controlers in terms of resources and can be set up with high security assurance protecting the industrial network, the machine, while also providing advanced functionality, timely updates and modern runtimes like [docker containers](https://industrial.softing.com/products/docker.html).
 
-### DevSecOps
+Microsoft seems to have a robust service offering in this segment, among other cloud providers.
 
-BYOS - Bring your own security.
+## Manufacturers as software companies
 
-SAST
+Although *every company is a software company*, manufacturing is a rather distinct environment to work in so far. The IT and the perimeter has always been there, but the contemporary security practice is still developing. I was lucky to land in a team with already established DevOps proccess ( keep in mind that some companies only getting there) and managing security tasks in this context has been my bread and butter for a few years. Conversely, I am trying to learn more about the industry inside and outside. 
 
-DAST
+## Silver lining
 
-SCA
+Standardisation IS developing, as there are some open protocols that are heading in the right direction, like MT-connect and OPC-UA. Although MT-connect is neither authenticated, nor encrypted, it gained some ground across vendors. 
 
-Secret scanning
+The newer and better thought out OPC-UA is getting support, as it supports strong encryption and auth, with latest versions relying on certificate services. While these services are well defined in the specification, good pluggable implementations are still around the corner. Another cool thing, was that [Pwn2Own organized an event to take a crack ](https://sector7.computest.nl/post/2022-07-opc-ua-net-standard-trusted-application-check-bypass/)at it. We can hope that this gradually improves the robustness as security holes get adressed. 
 
-Container scans
+Instead of every tool manufacturing coming with their own platform, some independent entities trying to connect them all are springing up. Vendor agnostic solutions could be the way forward once industry settles on the communication standards. 
 
+## Summary
 
-
+If you've read this far, I suppose you found this interesting.
 
 ### Links , references
-[GitHub](https://github.com/) 
+
+[Microsoft IoT edge architecture](https://learn.microsoft.com/en-us/azure/architecture/guide/iiot-guidance/iiot-architecture)
 
 [Cool PLC security talk](https://www.youtube.com/watch?v=JtsyyTfSP1I)
 
 [Trend micro industry 4.0 CNC report PDF](https://documents.trendmicro.com/assets/white_papers/wp-the-security-risks-faced-by-cnc-machines-in-industry-4-0.pdf)
+
+[Blackhat EU talk on the Trend Micro research](https://www.blackhat.com/eu-22/briefings/schedule/#abusing-cnc-technologies-28834)
+
+[Pwn2Own OPC-UA](https://sector7.computest.nl/post/2022-07-opc-ua-net-standard-trusted-application-check-bypass/)
