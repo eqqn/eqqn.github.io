@@ -63,7 +63,7 @@ However, for attackers these present another target for espionage or disrupting 
 
 ## Industrial networks
 
-The networks in which these machines operate are also rather diverse. Each of the segments mentioned earlier have their own caveats. SCADA? Air-gaps?
+The networks in which these machines operate are also rather diverse. Each of the segments mentioned earlier have their own caveats. 
 
 A tool shop with 5 machines from one brand will probably be different from one combining multiple machine vendors and processes into one megafactory. 
 
