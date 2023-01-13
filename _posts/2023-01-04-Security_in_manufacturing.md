@@ -89,15 +89,17 @@ Although *every company is a software company*, manufacturing is a rather distin
 
 ## Silver lining
 
-Standardisation IS developing, as there are some open protocols that are heading in the right direction, like MT-connect and OPC-UA. Although MT-connect is neither authenticated, nor encrypted, it gained some ground across vendors. 
+Standardisation IS developing, as there are some open protocols that are heading in the right direction, like MT-connect and OPC-UA. Although MT-connect is neither authenticated, nor encrypted, it gained some ground across vendors and showed the benefits of standardised connectivity. 
 
-The newer and better thought out OPC-UA is getting support, as it supports strong encryption and auth, with latest versions relying on certificate services. While these services are well defined in the specification, good pluggable implementations are still around the corner. Another cool thing, was that [Pwn2Own organized an event to take a crack ](https://sector7.computest.nl/post/2022-07-opc-ua-net-standard-trusted-application-check-bypass/)at it. We can hope that this gradually improves the robustness as security holes get adressed. 
+The newer and better thought out OPC-UA is getting traction, as it supports strong encryption and auth, with latest versions relying on certificate services. While these services are well defined in the specification, good pluggable implementations are still around the corner. Another cool thing, was that [Pwn2Own organized an event to take a crack ](https://sector7.computest.nl/post/2022-07-opc-ua-net-standard-trusted-application-check-bypass/)at it. We can hope that this gradually improves the robustness as security holes get adressed. 
 
 Instead of every tool manufacturing coming with their own platform, some independent entities trying to connect them all are springing up. Vendor agnostic solutions could be the way forward once industry settles on the communication standards. 
 
 ## Summary
 
-If you've read this far, I suppose you found this interesting.
+If you've read this far, I suppose you found this interesting. 
+
+Security work in manufacturing has some challenges that are common for all software companies, and some unique ones too. 
 
 ### Links , references
 
