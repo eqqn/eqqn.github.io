@@ -47,8 +47,6 @@ Whether you call it Cloud, Digital Transformation, Manufacturing 4.0... It's the
 Try to find [top 10 CNC machine brands](https://www.stylecnc.com/blog/top-10-best-cnc-machine-manufacturers-brands.html). I personally don't know half of the list and could add a bunch of more. And that's not even covering high-performance segments. Or different workflows - it's not just milling, but also grinding, [wire EDM](https://en.wikipedia.org/wiki/Electrical_discharge_machining)(not dance music) and laser/additive(think of 3D printing with metal powders heated by laser!) manufacturing. These machines are even more specialized and made by smaller companies.
 As there are no prevailing common standard, we have many different workflows, controls, APIs and protocols.
 
-Because of a fragmented market it is probably not at the forefront of software industry[citation needed]
-
 ### Trendmicro industry 4.0 research
 
 Recently published [research by Trendmicro](https://www.trendmicro.com/vinfo/us/security/news/internet-of-things/uncovering-security-weak-spots-in-industry-4-0-cnc-machines) highlights some of the vulnerabilities around the few machines they tried. They also make a very good point on the length of the supply chain.
