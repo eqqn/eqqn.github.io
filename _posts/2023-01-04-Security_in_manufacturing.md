@@ -4,7 +4,7 @@ Ever wondered what it is like to work in a high tech manufacturing company? Earl
 
 ![5-axis-machine](https://eqqn.github.io/images/5-Axis-CNC-Milling-Machines.png)
 
-They make all kinds of **very expensive** CNC, EDM and other machines for customers globally in all kinds of industries - automotive, watchmaking, luxury goods, aerospace, medical, IT, military. The parts are either used directly, or machined into molds for plastic and other materials.
+They make all kinds of **very expensive** CNC, EDM and other machines for customers globally in all kinds of industries - automotive, watchmaking, luxury goods, aerospace, medical, IT, defense. The parts are either used directly, or machined into molds for plastic and other materials.
 
 
 P.S.: I will avoid naming the company I work for, so images and examples will be rather general, but accurately represent the industry (although shouldn't be hard to guess,find. Don't take it as a challenge). Opinions my own and so on.
