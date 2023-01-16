@@ -31,12 +31,13 @@
 
 # Blog
 
+[Security in CNC manufacturing]({{ site.baseurl }}{% post_url 2023-01-04-Security_in_manufacturing %})
+
 [GKE Leaky Buckets]({{ site.baseurl }}{% post_url 2021-03-09-GKE_and_buckets %})
 
 [My OSCP Journey]({{ site.baseurl }}{% post_url 2020-06-30-OSCP-journey %})
 
 [HaveIBeenPwned_adventures_with_Shodan]({{ site.baseurl }}{% post_url 2019-02-10-misadventures_of_shodan %})
-
 
 [whoami]({{ site.baseurl }}{% post_url 1970-01-01-WhoAmI %})
 
