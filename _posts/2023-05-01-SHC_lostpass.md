@@ -125,8 +125,11 @@ I unleashed it on the challenge website and recovered the password for admin :
 `ducksnice`
 
 ![flag](https://eqqn.github.io/images/shc_lp_flag.png)
+
 Login and get the flag! 
 shc{ducks_like_2_sleep_quack}
 
+
 [1]https://github.com/python/cpython/issues/95778
+
 [2]https://python-forum.io/thread-38185.html
