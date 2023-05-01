@@ -2,6 +2,8 @@
 
 #### Date V Descending
 
+[Swiss Hacking Challenge 2023 - Lost Pass]({{ site.baseurl }}{% post_url 2023-05-01-SHC_lostpass %}) 
+
 [Hackrocks Cyber Summer Camp 2022]({{ site.baseurl }}{% post_url 2022-09-01-Hackrocks_SC %})
 
 [T3N4CI0US CTF - Escape]({{ site.baseurl }}{% post_url 2022-08-12-T3n4ci0us_CTF %})
