@@ -13,13 +13,23 @@ We are given website [source code](https://github.com/eqqn/eqqn.github.io/blob/m
 ### Looking around
 The frontend presents you a login form. The `register` buttons do not submit any data and we get HTTP 405 - Method not allowed. 
 The /register API is defined in the source code provided, and I could register as a user, and receive a JWT token to toy with.
+
 ` curl -X POST hxxp://chall.m0unt41n.ch:31063/register -d 'username=USER&password=PASS' `
 
 ### Code analysis
 
 There is a lot going on in this code, I was jumping around and doing all the wrong things initially. 
 
+The goal is to login to the page as admin, as the template will render the flag, if you are logged in as admin.
+``` python
+    if user["username"] == "admin":
+        return render_template('dashboard.html', message=f"Your secret is: {open('flag.txt', 'r').read()}")
+    return render_template('dashboard.html', message=f"lettuce")
 ```
+
+
+
+``` python
 sys.set_int_max_str_digits(0)
 app.config['SECRET_KEY'] = secrets.token_hex(20)
 ```
@@ -29,7 +39,7 @@ TLDR - its a DOS mitigation[1],[2], setting it at 0 does not affect integer calc
 The secret is generated on startup securely and hashcat will not even let you do a 16^20 search.
 
 There are also some SQL queries done, but no luck there.
-```
+``` python
 def error_log(username, password):
     if username == "admin":
         f = open("error.log", "w")
@@ -39,9 +49,9 @@ def error_log(username, password):
     return False
 ```
 This initially looked interesting, if we could inject into {password} variable. We can, but python f strings are solid enough. 
-I got the application to run locally and tried passing python commands as password, but no luck.
+I got the application to run locally and tried passing python commands as password, but no luck. We will use the `time.sleep(1)` later!
 
-```
+``` python
 @app.route('/dashboard', methods=['GET'])
 @auth_required
 def dashboard(token):
@@ -54,7 +64,7 @@ the `user["username"] == "admin"` comparison is solid, creating "weird" username
 
 ### The vulnerability
 Perhaps obvious, but the password generation has a flaw (besides using md5)- it compares the hash of **each character** rather than the whole string... 
-```
+``` python
 def check_password(username, hashed_password, password):
     hashed_password = hashed_password.split(",")
     for x in range(len(hashed_password)):
@@ -74,7 +84,7 @@ then error ( and 1 second sleep!) is never performed.
 
 I wrote a script, tested locally, and I was able to recover my dummy secret. 
 
-```
+``` python
 import requests
 import time
 
@@ -117,7 +127,6 @@ I unleashed it on the challenge website and recovered the password for admin :
 ![flag](https://eqqn.github.io/images/shc_lp_flag.png)
 Login and get the flag! 
 shc{ducks_like_2_sleep_quack}
-
 
 [1]https://github.com/python/cpython/issues/95778
 [2]https://python-forum.io/thread-38185.html
