@@ -35,6 +35,8 @@
 
 # Blog
 
+[CISM Journey]({{ site.baseurl }}{% post_url 2024-06-03-cism %})
+
 [Security in CNC manufacturing]({{ site.baseurl }}{% post_url 2023-01-04-Security_in_manufacturing %})
 
 [GKE Leaky Buckets]({{ site.baseurl }}{% post_url 2021-03-09-GKE_and_buckets %})
@@ -46,4 +48,6 @@
 [whoami]({{ site.baseurl }}{% post_url 1970-01-01-WhoAmI %})
 
 [twitter](https://twitter.com/eqqnq "twitter")
+
+[mastodon](https://infosec.exchange/@eqqn "mastodon")
 
