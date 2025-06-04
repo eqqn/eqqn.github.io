@@ -112,12 +112,19 @@ IEC 62443 offers multiple chapters depending on application - whether you are de
 This is de-facto standard to exchange security requirements, determine security levels and to ensure alignment with industrial security norms.
 ![IEC 62443 standards](https://eqqn.github.io/images/VDWIEC62443.jpg)
 
+## Regulation 
+Critical infrastructure and manufacturing industries are now facing regulatory pressure in various countries. Manufacturing being an important pillar of supply chain and strategic interests globally, securing it against increasing number of attacks is more important than ever. 
+On the US side, government contracts have strict DoD requirements and implementing NIST SP 800-171.
+On the EU side, EU Cyber Resilience Act requires baseline security to access European markets, and will come into force in late 2027.
+(If you want to know what actions you need to take, I have composed a convenient checklist at https://resilience-checklist.eu/ ) 
 
 ## Summary
 
 Security work in manufacturing has some challenges that are common for all software companies, and some unique ones too. 
 
 Standards help collaboration between operators, manufacturers and sets the framework to follow for industrial security.
+
+Governments are pressuring the industry for improvement, despite the shortage of security professionals and funding in the sector.
 
 ### Links , references
 
