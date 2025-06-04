@@ -8,7 +8,8 @@ They make all kinds of **very expensive** CNC, EDM and other machines for custom
 
 
 P.S.: I will avoid naming the company I work for, so images and examples will be rather general, but accurately represent the industry (although shouldn't be hard to guess,find. Don't take it as a challenge). Opinions my own and so on.
-[![Assembly-lines](https://eqqn.github.io/images/youtube_studer_thubmbnail.jpg)](https://www.youtube.com/watch?v=Dbrcj4qm6So)
+[![Assembly-lines-](https://eqqn.github.io/images/youtube_studer_thubmbnail.jpg)](https://www.youtube.com/watch?v=Dbrcj4qm6So)
+Titans of CNC has made an excellent video of one such companies.
 
 We have an assembly line not unlike in the video above, and industrial secrecy is important (no photos allowed on the shop floor).
 
@@ -38,11 +39,11 @@ Authenticated sessions and security considerations seem to be a rather recent de
 
 Depending on spec or requirements, additional software can be installed - easier calibration tools, clients, license managers, even [app stores](https://www.okuma.com/okuma-app-store) .
 
-And is just scratching the surface.
+And it's just scratching the surface.
 
 ## Industry 4.0
 
-Whether you call it Cloud, Digital Transformation, Manufacturing 4.0... It's there. Across the industry, the untapped potential for better automation, big data analytics and ERP integration is there. But it's also hampered by lack of interoperability on many levels, as well as valid security concerns.
+Whether you call it Cloud, Digital Transformation, Manufacturing 4.0... It's there. Across the industry, the untapped potential for better automation, big data analytics and ERP integration. But it's also hampered by lack of interoperability on many levels, as well as valid security concerns.
 
 Try to find [top 10 CNC machine brands](https://www.stylecnc.com/blog/top-10-best-cnc-machine-manufacturers-brands.html). I personally don't know half of the list and could add a bunch of more. And that's not even covering high-performance segments. Or different workflows - it's not just milling, but also grinding, [wire EDM](https://en.wikipedia.org/wiki/Electrical_discharge_machining)(not dance music) and laser/additive(think of 3D printing with metal powders heated by laser!) manufacturing. These machines are even more specialized and made by smaller companies.
 As there are no prevailing common standard, we have many different workflows, controls, APIs and protocols.
@@ -51,7 +52,7 @@ As there are no prevailing common standard, we have many different workflows, co
 
 Recently published [research by Trendmicro](https://www.trendmicro.com/vinfo/us/security/news/internet-of-things/uncovering-security-weak-spots-in-industry-4-0-cnc-machines) highlights some of the vulnerabilities around the few machines they tried. They also make a very good point on the length of the supply chain.
 
-![subbly_chain](https://eqqn.github.io/images/supply_chain_tm.JPG)
+![supply_chain](https://eqqn.github.io/images/supply_chain_tm.JPG)
 
 The machines subjected to the research seem to be chosen mostly due to their availability/access in collaboration with University of Milan. For example, the [Haas Super Mini Mill](https://www.haascnc.com/content/haascnc/en/build-and-price/choose-options.SMINIMILL.html) 2 CNC starts at 50k$, but their factory floor machines are more likely in 150-300k range if you go anything beyond standard.
 
@@ -93,11 +94,30 @@ The newer and better thought out OPC-UA is getting traction, as it supports stro
 
 Instead of every tool manufacturing coming with their own platform, some independent entities trying to connect them all are springing up. Vendor agnostic solutions could be the way forward once industry settles on the communication standards. 
 
+## German Machine Tool Builders association
+
+VDW, German machine Tool Builders Association, offers some well documented guidance in their security manuals for Operators and Manufacturers. 
+
+![Machines on the network](https://eqqn.github.io/images/VDWDiagram2.jpg)
+
+[Security for machine tools](https://vdw.de/wp-content/uploads/2023/07/Security-for-machine-tools-EN.pdf) guide provides examples of a real-life deployment and security considerations, risk scenarios and strategy to follow in order to protect the machine or wider OT networks.
+It is based around IEC 62443 Industrial security standard 
+
+The work group consists of many industry players promoting machine tools not just in Germany, but also globally. The security workgroup further develops the guidance and shares best practices with the wider community.
+
+## IEC 62443 Industrial security standard
+
+While ISO 27001 covers a lot of IT security areas, it is not specific enough for industrial settings. The need for physical safety, consequences of security events and hardware in question is vastly different from standard IT environment.
+IEC 62443 offers multiple chapters depending on application - whether you are developing software for your products, or expect so serve the industrial market, or operate a facility - the standard covers all areas.
+This is de-facto standard to exchange security requirements, determine security levels and to ensure alignment with industrial security norms.
+![IEC 62443 standards](https://eqqn.github.io/images/VDWIEC62443.jpg)
+
+
 ## Summary
 
-If you've read this far, I suppose you found this interesting. 
-
 Security work in manufacturing has some challenges that are common for all software companies, and some unique ones too. 
+
+Standards help collaboration between operators, manufacturers and sets the framework to follow for industrial security.
 
 ### Links , references
 
@@ -108,5 +128,7 @@ Security work in manufacturing has some challenges that are common for all softw
 [Trend micro industry 4.0 CNC report PDF](https://documents.trendmicro.com/assets/white_papers/wp-the-security-risks-faced-by-cnc-machines-in-industry-4-0.pdf)
 
 [Blackhat EU talk on the Trend Micro research](https://www.blackhat.com/eu-22/briefings/schedule/#abusing-cnc-technologies-28834)
+
+[Security for Machine tool Builders - VDW Guide](https://vdw.de/wp-content/uploads/2023/07/Security-for-machine-tools-EN.pdf)
 
 [Pwn2Own OPC-UA](https://sector7.computest.nl/post/2022-07-opc-ua-net-standard-trusted-application-check-bypass/)
