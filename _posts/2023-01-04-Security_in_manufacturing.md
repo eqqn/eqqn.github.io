@@ -116,7 +116,7 @@ This is de-facto standard to exchange security requirements, determine security 
 Critical infrastructure and manufacturing industries are now facing regulatory pressure in various countries. Manufacturing being an important pillar of supply chain and strategic interests globally, securing it against increasing number of attacks is more important than ever. 
 On the US side, government contracts have strict DoD requirements and implementing NIST SP 800-171.
 On the EU side, EU Cyber Resilience Act requires baseline security to access European markets, and will come into force in late 2027.
-(If you want to know what actions you need to take, I have composed a convenient checklist at https://resilience-checklist.eu/ ) 
+(If you want to know what actions you need to take, I have composed a convenient checklist at [https://resilience-checklist.eu/](https://resilience-checklist.eu/) )
 
 ## Summary
 
