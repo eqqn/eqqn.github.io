@@ -8,3 +8,7 @@ EU CRA.
 
 NAT is important.
 Outbound connectivity.
+
+
+Remote mgmt - mission impossible. 
+Same for av. 
