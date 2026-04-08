@@ -1,8 +1,6 @@
-# Write-ups
+# Blog
 
 #### Date V Descending
-
-# Blog
 
 [ISO 27001 Lead Implementer? For a hacker like you??]({{ site.baseurl }}{% post_url 2026-03-17-ISOhammer27k %})
 
