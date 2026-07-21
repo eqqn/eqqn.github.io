@@ -18,11 +18,11 @@ We have an assembly line not unlike in the video above, and industrial secrecy i
 As you can probably guess, a 3-5 axis CNC machine will contain a lot of electromechanical parts. 
 PLCs, motors, connection cables, and buses for industrial protocols.
 
-From security and usability point of view, it makes sense that they are isolated and sit behind an internal switch. To control the CNC, a control unit is used, called TNC. This is familiar territory - a rugged terminal with screen, keyboard, USB peripherals and Windows or Linux OS running on top.
+From security and usability point of view, it makes sense that they are isolated and sit behind an internal switch. To control the CNC, a control unit is used, called NC. This is familiar territory - a rugged terminal with screen, keyboard, USB peripherals and Windows or Linux OS running on top.
 
 Additionally, turnkeys and emergency shutdown switches are there to ensure safety of the operator.
 
-TNC host executes the design and jobs loaded onto the machine, displays status, allows to edit job instructions/code and so on.
+NC host executes the design and jobs loaded onto the machine, displays status, allows to edit job instructions/code and so on.
 ![TNC](https://eqqn.github.io/images/siemens-neu_7.jpg)
 
 ## So what about the security?
